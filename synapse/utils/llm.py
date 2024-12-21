@@ -12,6 +12,10 @@ from openai import (
     RateLimitError,
 )
 
+# .envを環境変数に登録
+from dotenv import load_dotenv
+load_dotenv()
+
 logger = logging.getLogger("main")
 
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
