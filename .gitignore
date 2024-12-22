@@ -17,4 +17,11 @@
 !results
 
 !synapse
-!synapse/**
+!synapse/agents
+!synapse/agents/**
+!synapse/envs
+!synapse/envs/**
+!synapse/memory
+!synapse/memory/**
+synapse/memory/*/*.faiss
+synapse/memory/*/*.pkl
