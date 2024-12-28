@@ -1,6 +1,5 @@
 VENV_NAME = .venv
-
-all: click
+NUM_EPISODES = 1
 
 
 .PHONY: click
@@ -9,7 +8,7 @@ click:
 		--env_name click-button \
 		--model gpt-3.5-turbo-1106 \
 		--seed 0 \
-		--num_episodes 1
+		--num_episodes $(NUM_EPISODES)
 
 
 .PHONY: comp-click
@@ -18,7 +17,7 @@ comp-click:
 		--env_name click-option_enter-text \
 		--model gpt-3.5-turbo-1106 \
 		--seed 0 \
-		--num_episodes 1
+		--num_episodes $(NUM_EPISODES)
 
 
 .PHONY: comp-click-rev
@@ -27,7 +26,7 @@ comp-click-rev:
 		--env_name click-option_enter-text-reverse \
 		--model gpt-3.5-turbo-1106 \
 		--seed 0 \
-		--num_episodes 1
+		--num_episodes $(NUM_EPISODES)
 
 
 .PHONY: comp-login
@@ -36,7 +35,7 @@ comp-login:
 		--env_name click-option_login-user \
 		--model gpt-3.5-turbo-1106 \
 		--seed 0 \
-		--num_episodes 1
+		--num_episodes $(NUM_EPISODES)
 
 
 .PHONY: comp-login-rev
@@ -45,7 +44,7 @@ comp-login-rev:
 		--env_name click-option_login-user-reverse \
 		--model gpt-3.5-turbo-1106 \
 		--seed 0 \
-		--num_episodes 1
+		--num_episodes $(NUM_EPISODES)
 
 
 .PHONY: comp-login-transition
@@ -54,7 +53,7 @@ comp-login-transition:
 		--env_name click-option_login-user-transition \
 		--model gpt-3.5-turbo-1106 \
 		--seed 0 \
-		--num_episodes 1
+		--num_episodes $(NUM_EPISODES)
 
 
 .PHONY: comp-login-transition-rev
@@ -63,7 +62,7 @@ comp-login-transition-rev:
 		--env_name click-option_login-user-transition-reverse \
 		--model gpt-3.5-turbo-1106 \
 		--seed 0 \
-		--num_episodes 1
+		--num_episodes $(NUM_EPISODES)
 
 
 .PHONY: memory
