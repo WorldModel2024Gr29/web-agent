@@ -8,6 +8,11 @@ from collections import Counter
 
 logger = logging.getLogger(__name__)
 
+# .envを環境変数に登録
+from dotenv import load_dotenv
+load_dotenv()
+
+
 EXEMPLAR_LIST = [
     "book-flight",
     "choose-date",
@@ -57,6 +62,7 @@ EXEMPLAR_LIST = [
     "use-autocomplete",
     "use-slider",
     "use-spinner",
+    "click-button-test"  # add for testing
 ]
 
 

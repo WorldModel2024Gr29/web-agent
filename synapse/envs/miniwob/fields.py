@@ -2557,6 +2557,9 @@ FIELD_EXTRACTORS['use-autocomplete_click-dialog-reverse'] = functools.partial(
 )
 
 
+_add('click-button-test', r'Click on the "(.*)" button\.', ['target'])
+
+
 ################################################################
 # Script for printing out the utterances for a particular task
 
