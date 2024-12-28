@@ -1,0 +1,58 @@
+{
+  "click-option_enter-text": {
+    "demo": [
+      {
+        "state": "",
+        "act": ""
+      }
+    ]
+  },
+  "click-option_enter-text-reverse": {
+    "demo": [
+      {
+        "state": "",
+        "act": ""
+      }
+    ]
+  },
+  "click-option_login-user": {
+    "demo": [
+      {
+        "state": "",
+        "act": ""
+      }
+    ]
+  },
+  "click-option_login-user-reverse": {
+    "demo": [
+      {
+        "state": "",
+        "act": ""
+      }
+    ]
+  },
+  "click-option_login-user-transition": {
+    "demo": [
+      {
+        "state": "",
+        "act": ""
+      }
+    ]
+  },
+  "click-option_login-user-transition-reverse": {
+    "demo": [
+      {
+        "state": "",
+        "act": ""
+      }
+    ]
+  },
+  "click-button-test": {
+    "demo": [
+      {
+        "state": "",
+        "act": ""
+      }
+    ]
+  }
+}

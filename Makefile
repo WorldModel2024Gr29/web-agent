@@ -70,6 +70,12 @@ comp-login-transition-rev:
 memory:
 	python build_memory.py --env miniwob
 
+
+.PHONY: memory-comp
+memory-comp:
+	python build_memory.py --env wm_compwob
+
+
 .PHONY: t
 t:
 	python run_miniwob.py \
