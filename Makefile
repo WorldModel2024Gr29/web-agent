@@ -39,6 +39,33 @@ comp-login:
 		--num_episodes 1
 
 
+.PHONY: comp-login-rev
+comp-login-rev:
+	python run_miniwob.py \
+		--env_name click-option_login-user-reverse \
+		--model gpt-3.5-turbo-1106 \
+		--seed 0 \
+		--num_episodes 1
+
+
+.PHONY: comp-login-transition
+comp-login-transition:
+	python run_miniwob.py \
+		--env_name click-option_login-user-transition \
+		--model gpt-3.5-turbo-1106 \
+		--seed 0 \
+		--num_episodes 1
+
+
+.PHONY: comp-login-transition-rev
+comp-login-transition-rev:
+	python run_miniwob.py \
+		--env_name click-option_login-user-transition-reverse \
+		--model gpt-3.5-turbo-1106 \
+		--seed 0 \
+		--num_episodes 1
+
+
 .PHONY: memory
 memory:
 	python build_memory.py --env miniwob

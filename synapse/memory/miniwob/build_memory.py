@@ -62,6 +62,12 @@ EXEMPLAR_LIST = [
     "use-autocomplete",
     "use-slider",
     "use-spinner",
+    "click-option_enter-text",                      # compwob
+    "click-option_enter-text-reverse",              # compwob
+    "click-option_login-user",                      # compwob
+    "click-option_login-user-reverse",              # compwob
+    "click-option_login-user-transition",           # compwob
+    "click-option_login-user-transition-reverse",   # compwob
     "click-button-test"  # add for testing
 ]
 
