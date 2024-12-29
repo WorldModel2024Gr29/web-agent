@@ -48,7 +48,7 @@ COMPWOB_TASKS = [
     "click-button_click-option_login-user-reverse",
     "click-button_click-tab-2-hard",
     "click-button_click-tab-2-hard-reverse",
-    "click-button_enter-text",
+    # "click-button_enter-text",  # bugged
     "click-checkboxes-soft_enter-password",
     "click-checkboxes-soft_enter-password-reverse",
     "click-checkboxes-soft_multi-layouts",
