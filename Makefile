@@ -2,6 +2,11 @@ VENV_NAME = .venv
 NUM_EPISODES = 1
 
 
+.PHONY: run_compwob
+run_compwob:
+	python run_compwob.py
+
+
 .PHONY: click
 click:
 	python run_miniwob.py \

@@ -1,8 +1,11 @@
+import sys
 import argparse
 import logging
 import os
 
 from synapse.agents.miniwob import Agent
+from debug import debug_cprint
+
 
 logger = logging.getLogger("synapse")
 logger.setLevel(logging.INFO)
@@ -33,8 +36,10 @@ def is_wm_compwob_task(env_name: str):
 
 def main():
     try:
+        debug_cprint(f"\nmain()", "white")
         parser = create_parser()
         args = parser.parse_args()
+        debug_cprint(f" env-name: {args.env_name}", "white")
 
         current_path = os.getcwd()
         # if is_wm_compwob_task(args.env_name):
@@ -63,16 +68,21 @@ def main():
         else:
             max_steps = 1
 
+        succeed = False
+        debug_cprint(f" max_steps: {max_steps}", "white")
         for i in range(args.num_episodes):
+            debug_cprint(f" loop {i+1}/{max_steps}", "white")
             # reset
             agent.reset(seed=args.seed + i)
 
             for _ in range(max_steps):
                 # filter
                 obs = agent.filter()
+                debug_cprint(f" obs: [{obs}]", "white")
 
                 # action
                 actions = agent.act(obs)
+                debug_cprint(f" actions: [{actions}]", "white")
                 if actions is None:
                     break
                 try:
@@ -81,9 +91,13 @@ def main():
                 except:
                     logger.info(f"Failed to execute action. Try again.")
                 if agent.done:
+                    debug_cprint(f" agent.done", "white")
                     break
-            agent.log_results()
+            succeed = agent.log_results()
+
         agent.close()
+        debug_cprint(f"\n", "white")
+        return succeed
 
     except Exception as e:
         print(f"Fatal error: {str(e)}")
