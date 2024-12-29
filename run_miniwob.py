@@ -37,12 +37,14 @@ def main():
         args = parser.parse_args()
 
         current_path = os.getcwd()
-        if is_wm_compwob_task(args.env_name):
-            memory_path = "synapse/memory/wm_compwob"
-            log_dir = "results/wm_compwob"
-        else:
-            memory_path = "synapse/memory/miniwob"
-            log_dir = "results/miniwob"
+        # if is_wm_compwob_task(args.env_name):
+        #     print(f"env is wm_compwob task")
+        #     memory_path = "synapse/memory/wm_compwob"
+        #     log_dir = "results/wm_compwob"
+        # else:
+        #     print(f"env is miniwob task")
+        #     memory_path = "synapse/memory/miniwob"
+        #     log_dir = "results/miniwob"
 
         memory_path = "synapse/memory/miniwob"
         log_dir = "results/miniwob"
