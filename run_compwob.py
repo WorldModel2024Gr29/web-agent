@@ -111,7 +111,7 @@ def _write_success_rate(writer: Any, compwob_results: dict) -> None:
     # total success_rate
     total_task_succceed = forward_task_succeed_count + reversed_task_succeed_count
     total_task_count = forward_task_count + reversed_task_count
-    total_task_success_rate = round(0 if total_task_count else total_task_succceed / total_task_count * 100, 1)
+    total_task_success_rate = round(0 if total_task_count == 0 else total_task_succceed / total_task_count * 100, 1)
     writer.writerow(["total success rate(%)", total_task_success_rate])
 
 
