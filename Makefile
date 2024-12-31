@@ -87,8 +87,3 @@ t:
 		--model gpt-3.5-turbo-1106 \
 		--seed 0 \
 		--num_episodes 1
-
-
-.PHONY: activate
-activate:
-	source .venv/bin/activate
