@@ -124,6 +124,10 @@ def _write_empty_line(writer: Any) -> None:
 
 
 def save_results_to_csv(args, compwob_results):
+    directory = "results/compwob"
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+
     timestamp = datetime.now().strftime("%y%m%d_%H%M")
     file_name = f"{directory}/compwob_result_{timestamp}.csv"
 
