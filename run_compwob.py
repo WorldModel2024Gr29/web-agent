@@ -7,6 +7,7 @@ import time
 from datetime import datetime
 
 from contextlib import contextmanager
+from typing import Any
 
 import run_miniwob
 from synapse.envs.miniwob.environment import COMPWOB_TASKS
@@ -72,29 +73,70 @@ def run_all_compwob_tasks(args):
     return results
 
 
+def _write_args(writer: Any, args: dict[str, str]) -> None:
+    writer.writerow(["args"])
+    for key, value in args.items():
+        writer.writerow([key, value])
+
+
+def _write_success_rate(writer: Any, compwob_results: dict) -> None:
+    """
+    forward-task, reversed-task の成功率、全タスクの成功率をcsvに書き込む
+    """
+    writer.writerow(["success rate"])
+
+    forward_task_count = 0
+    forward_task_succeed_count = 0
+    reversed_task_count = 0
+    reversed_task_succeed_count = 0
+
+    for task, result in compwob_results.items():
+        if task.endswith("-reverse"):
+            reversed_task_count += 1
+            reversed_task_succeed_count += result
+        else:
+            forward_task_count += 1
+            forward_task_succeed_count += result
+
+    # forward-task success rate
+    forward_task_success_rate = round(0 if forward_task_count == 0 else forward_task_succeed_count / forward_task_count * 100, 1)
+    writer.writerow(["forward-task success rate(%)", forward_task_success_rate])
+
+    # reversed-task success rate
+    reversed_task_success_rate = round(0 if reversed_task_count == 0 else reversed_task_succeed_count / reversed_task_count * 100, 1)
+    writer.writerow(["reversed-task success rate(%)", reversed_task_success_rate])
+
+    # total success_rate
+    total_task_succceed = forward_task_succeed_count + reversed_task_succeed_count
+    total_task_count = forward_task_count + reversed_task_count
+    total_task_success_rate = round(0 if total_task_count == 0 else total_task_succceed / total_task_count * 100, 1)
+    writer.writerow(["total success rate(%)", total_task_success_rate])
+
+
+def _write_task_results(writer: Any, compwob_results: dict) -> None:
+    writer.writerow(["task", "result(1:success, 0:failure)"])
+    for key, value in compwob_results.items():
+        writer.writerow([key, value])
+
+
+def _write_empty_line(writer: Any) -> None:
+    writer.writerow([])
+
+
 def save_results_to_csv(args, compwob_results):
     timestamp = datetime.now().strftime("%y%m%d_%H%M")
-    file_name = f"results/compwob_result_{timestamp}.csv"
+    file_name = f"{directory}/compwob_result_{timestamp}.csv"
 
     with open(file_name, mode="w", newline="", encoding="utf-8") as file:
         writer = csv.writer(file)
         writer.writerow(["compwob results"])
 
-        writer.writerow(["args"])
-        for key, value in args.items():
-            writer.writerow([key, value])
+        _write_args(writer, args)
+        _write_empty_line(writer)
+        _write_success_rate(writer, compwob_results)
+        _write_empty_line(writer)
+        _write_task_results(writer, compwob_results)
 
-        writer.writerow([])
-
-        total_succceed = sum(compwob_results.values())
-        success_rate = round(total_succceed / len(COMPWOB_TASKS) * 100, 1)
-        writer.writerow(["success_rate(%)", success_rate])
-
-        writer.writerow([])
-
-        writer.writerow(["task", "result(1:success, 0:failure)"])
-        for key, value in compwob_results.items():
-            writer.writerow([key, value])
     print(f"Success: save result to '{file_name}'")
 
 
