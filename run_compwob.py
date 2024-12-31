@@ -8,6 +8,7 @@ from datetime import datetime
 
 from contextlib import contextmanager
 from typing import Any
+from termcolor import cprint
 
 import run_miniwob
 from synapse.envs.miniwob.environment import COMPWOB_TASKS
@@ -68,8 +69,9 @@ def run_all_compwob_tasks(args):
             print(f"\n{'=' * 100}\n[{no}/{total_no}] Task: {env_name}")
             no += 1
             succeed = run(env_name, args)
-            print(f"succeed: {succeed}")
+            cprint(f"succeed: {succeed}", "green" if succeed else "red")
             results[env_name] = int(succeed)
+
     return results
 
 
