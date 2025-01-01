@@ -72,6 +72,8 @@ EXEMPLAR_LIST = [
     "enter-date_login-user",
     "login-user_navigate-tree",
     "login-user_navigate-tree-reverse",
+    "multi-layouts_login-user",
+    "multi-layouts_login-user-reverse",
 ]
 
 
