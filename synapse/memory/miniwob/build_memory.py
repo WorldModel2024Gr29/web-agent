@@ -61,7 +61,9 @@ EXEMPLAR_LIST = [
     "tic-tac-toe",
     "use-autocomplete",
     "use-slider",
-    "use-spinner"
+    "use-spinner",
+    "click-button_click-dialog",  # tmp
+    "click-button_click-dialog-reverse",  # tmp
 ]
 
 

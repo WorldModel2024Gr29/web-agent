@@ -1292,5 +1292,65 @@
         "act": "offset = 6 - 0\nfor _ in range(abs(offset)):\n    if offset < 0:\n        agent.click_xpath(\"//*[@id='area']/span/a[2]/span[1]\")\n    elif offset > 0:\n        agent.click_xpath(\"//*[@id='area']/span/a[1]/span[1]\")\nagent.click_xpath(\"//*[@id='subbtn']\")"
       }
     ]
+  },
+  "click-button_click-dialog": {
+    "demo": [
+      {
+        "task": "Click the \"submit\" button and then close the dialog box by clicking the \"x\".",
+        "trajectory": [
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n    <div id=\"query\">Click on the \"submit\" button.</div>\n    <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n      <button data-wob_ref=\"4\" data-wob_eps=\"e0\">submit</button>\n      <button data-wob_ref=\"5\" data-wob_eps=\"e0\">previous</button>\n    </div>\n  </div>",
+            "act": "agent.click_xpath(\"//button[text()='submit']\")"
+          },
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Close the dialog box by clicking the \"x\".</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\"></div>\n</div>\n<div tabindex=\"-1\" role=\"dialog\" class=\"ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable ui-resizable\" aria-describedby=\"dialog\" aria-labelledby=\"ui-id-1\" style=\"position: absolute; display: block;\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n  <button type=\"button\" class=\"ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close\" title=\"Close\" data-wob_ref=\"5\" data-wob_eps=\"e0\"></button>\n</div>",
+            "act": "agent.click_xpath(\"//button[@title='Close']\")"
+          }
+        ]
+      },
+      {
+        "task": "Click the \"ok\" button and then close the dialog box by clicking the \"x\".",
+        "trajectory": [
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n    <div id=\"query\">Click on the \"ok\" button.</div>\n    <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n      <button data-wob_ref=\"4\" data-wob_eps=\"e0\">ok</button>\n      <button data-wob_ref=\"5\" data-wob_eps=\"e0\">previous</button>\n    </div>\n  </div>",
+            "act": "agent.click_xpath(\"//button[text()='ok']\")"
+          },
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Close the dialog box by clicking the \"x\".</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\"></div>\n</div>\n<div tabindex=\"-1\" role=\"dialog\" class=\"ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable ui-resizable\" aria-describedby=\"dialog\" aria-labelledby=\"ui-id-1\" style=\"position: absolute; display: block;\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n  <button type=\"button\" class=\"ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close\" title=\"Close\" data-wob_ref=\"5\" data-wob_eps=\"e0\"></button>\n</div>",
+            "act": "agent.click_xpath(\"//button[@title='Close']\")"
+          }
+        ]
+      }
+    ]
+  },
+  "click-button_click-dialog-reverse": {
+    "demo": [
+      {
+        "task": "Close the dialog box by clicking the \"x\", after clicking on the \"submit\" button.",
+        "trajectory": [
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Close the dialog box by clicking the \"x\".</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\"></div>\n</div>\n<div tabindex=\"-1\" role=\"dialog\" class=\"ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable ui-resizable\" aria-describedby=\"dialog\" aria-labelledby=\"ui-id-1\" style=\"position: absolute; display: block;\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n  <button type=\"button\" class=\"ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close\" title=\"Close\" data-wob_ref=\"5\" data-wob_eps=\"e0\"></button>\n</div>",
+            "act": "agent.click_xpath(\"//button[@title='Close']\")"
+          },
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n    <div id=\"query\">Click on the \"submit\" button.</div>\n    <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n      <button data-wob_ref=\"4\" data-wob_eps=\"e0\">submit</button>\n      <button data-wob_ref=\"5\" data-wob_eps=\"e0\">previous</button>\n    </div>\n  </div>",
+            "act": "agent.click_xpath(\"//button[text()='submit']\")"
+          }
+        ]
+      },
+      {
+        "task": "Close the dialog box by clicking the \"x\", after clicking on the \"ok\" button.",
+        "trajectory": [
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Close the dialog box by clicking the \"x\".</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\"></div>\n</div>\n<div tabindex=\"-1\" role=\"dialog\" class=\"ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable ui-resizable\" aria-describedby=\"dialog\" aria-labelledby=\"ui-id-1\" style=\"position: absolute; display: block;\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n  <button type=\"button\" class=\"ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close\" title=\"Close\" data-wob_ref=\"5\" data-wob_eps=\"e0\"></button>\n</div>",
+            "act": "agent.click_xpath(\"//button[@title='Close']\")"
+          },
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n    <div id=\"query\">Click on the \"ok\" button.</div>\n    <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n      <button data-wob_ref=\"4\" data-wob_eps=\"e0\">ok</button>\n      <button data-wob_ref=\"5\" data-wob_eps=\"e0\">previous</button>\n    </div>\n  </div>",
+            "act": "agent.click_xpath(\"//button[text()='ok']\")"
+          }
+        ]
+      }
+    ]
   }
 }
