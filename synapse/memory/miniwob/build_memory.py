@@ -69,6 +69,7 @@ EXEMPLAR_LIST = [
     "click-checkboxes-soft_enter-password",
     "click-checkboxes-soft_enter-password-reverse",
     "click-link_click-dialog",
+    "enter-date_login-user",
 ]
 
 

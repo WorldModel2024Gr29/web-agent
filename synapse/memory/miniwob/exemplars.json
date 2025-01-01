@@ -1403,5 +1403,28 @@
         ]
       }
     ]
+  },
+  "enter-date_login-user": {
+    "demo": [
+      {
+        "task": "Enter 08/20/2013 as the date, and then enter the username nathalie and the password 5Br into the text fields and press login.",
+        "trajectory": [
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Enter <span class=\"bold\">08/20/2013</span> as the date and hit submit.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n    <div id=\"form\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n      <input type=\"date\" id=\"tt\" data-wob_ref=\"5\" data-wob_eps=\"e0\">\n      <button id=\"subbtn\" class=\"secondary-action\" data-wob_ref=\"6\" data-wob_eps=\"e0\">Submit</button>\n    </div>\n  </div>\n</div>",
+            "act": "agent.click_xpath(\"//*[@id='tt']\")\nagent.press(\"arrowleft\")\nagent.press(\"arrowleft\")\nagent.type('08/20/2013')\nagent.click_xpath(\"//*[@id='subbtn']\")"
+          },
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Enter the <span class=\"bold\">username</span> \"nathalie\" and the <span class=\"bold\">password</span> \"5Br\" into the text fields and press login.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n    <div id=\"form\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n      <p data-wob_ref=\"5\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"6\" data-wob_eps=\"e0\">Username</label><input type=\"text\" id=\"username\" data-wob_ref=\"7\" data-wob_eps=\"e0\"></p>\n      <p data-wob_ref=\"8\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"9\" data-wob_eps=\"e0\">Password</label><input type=\"password\" id=\"password\" data-wob_ref=\"10\" data-wob_eps=\"e0\"></p>\n      <button id=\"subbtn\" class=\"secondary-action\" data-wob_ref=\"11\" data-wob_eps=\"e0\">OK</button>\n    </div>\n  </div>\n</div>",
+            "obs": "Username<input>\nPassword<input>",
+            "act": "agent.click_xpath(\"//*[@id='username']\")"
+          },
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Enter the <span class=\"bold\">username</span> \"nathalie\" and the <span class=\"bold\">password</span> \"5Br\" into the text fields and press login.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\" data-tampered=\"e0\">\n    <div id=\"form\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n      <p data-wob_ref=\"5\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"6\" data-wob_eps=\"e0\">Username</label><input type=\"text\" id=\"username\" data-wob_ref=\"7\" data-wob_eps=\"e0\" data-tampered=\"e0\"></p>\n      <p data-wob_ref=\"8\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"9\" data-wob_eps=\"e0\">Password</label><input type=\"password\" id=\"password\" data-wob_ref=\"10\" data-wob_eps=\"e0\" data-tampered=\"e0\"></p>\n      <button id=\"subbtn\" class=\"secondary-action\" data-wob_ref=\"11\" data-wob_eps=\"e0\">OK</button>\n    </div>\n  </div>\n</div>",
+            "obs": "Username<input>\nPassword<input>",
+            "act": "agent.type('5Br')\nagent.click_xpath(\"//*[@id='subbtn']\")"
+          }
+        ]
+      }
+    ]
   }
 }
