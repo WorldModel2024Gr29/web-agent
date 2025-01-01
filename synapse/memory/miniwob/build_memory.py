@@ -70,6 +70,8 @@ EXEMPLAR_LIST = [
     "click-checkboxes-soft_enter-password-reverse",
     "click-link_click-dialog",
     "enter-date_login-user",
+    "login-user_navigate-tree",
+    "login-user_navigate-tree-reverse",
 ]
 
 

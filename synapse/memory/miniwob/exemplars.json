@@ -1426,5 +1426,61 @@
         ]
       }
     ]
+  },
+  "login-user_navigate-tree" : {
+    "demo": [
+      {
+        "task": "Enter the username nathalie and the password 5Br into the text fields and press login, and then navigate through the file tree. Find and click on the folder or file named Karrie.",
+        "trajectory": [
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Enter the <span class=\"bold\">username</span> \"nathalie\" and the <span class=\"bold\">password</span> \"5Br\" into the text fields and press login.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n    <div id=\"form\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n      <p data-wob_ref=\"5\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"6\" data-wob_eps=\"e0\">Username</label><input type=\"text\" id=\"username\" data-wob_ref=\"7\" data-wob_eps=\"e0\"></p>\n      <p data-wob_ref=\"8\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"9\" data-wob_eps=\"e0\">Password</label><input type=\"password\" id=\"password\" data-wob_ref=\"10\" data-wob_eps=\"e0\"></p>\n      <button id=\"subbtn\" class=\"secondary-action\" data-wob_ref=\"11\" data-wob_eps=\"e0\">OK</button>\n    </div>\n  </div>\n</div>",
+            "obs": "Username<input>\nPassword<input>",
+            "act": "agent.click_xpath(\"//*[@id='username']\")"
+          },
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Enter the <span class=\"bold\">username</span> \"nathalie\" and the <span class=\"bold\">password</span> \"5Br\" into the text fields and press login.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\" data-tampered=\"e0\">\n    <div id=\"form\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n      <p data-wob_ref=\"5\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"6\" data-wob_eps=\"e0\">Username</label><input type=\"text\" id=\"username\" data-wob_ref=\"7\" data-wob_eps=\"e0\" disabled=\"disabled\"></p>\n      <p data-wob_ref=\"8\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"9\" data-wob_eps=\"e0\">Password</label><input type=\"password\" id=\"password\" data-wob_ref=\"10\" data-wob_eps=\"e0\" disabled=\"disabled\"></p>\n      <button id=\"subbtn\" class=\"secondary-action\" data-wob_ref=\"11\" data-wob_eps=\"e0\" disabled=\"disabled\">OK</button>\n    </div>\n  <div id=\"popup\" data-wob_ref=\"12\" data-wob_eps=\"e0\">\n        <p data-wob_ref=\"13\" data-wob_eps=\"e0\">Your session is about to time out.</p>\n        <p data-wob_ref=\"14\" data-wob_eps=\"e0\">Exit to home page?</p>\n        <p data-wob_ref=\"15\" data-wob_eps=\"e0\"><button id=\"popup-ok\" data-wob_ref=\"16\" data-wob_eps=\"e0\">OK</button> <button id=\"popup-cancel\" data-wob_ref=\"17\" data-wob_eps=\"e0\">Cancel</button></p></div></div>\n</div>",
+            "obs": "Your session is about to time out.\nExit to home page?",
+            "act": "agent.click_xpath(\"//*[@id='popup-cancel']\")\nagent.click_xpath(\"//*[@id='username']\")\nagent.type('nathalie')\nagent.click_xpath(\"//*[@id='password']\")"
+          },
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Enter the <span class=\"bold\">username</span> \"nathalie\" and the <span class=\"bold\">password</span> \"5Br\" into the text fields and press login.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\" data-tampered=\"e0\">\n    <div id=\"form\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n      <p data-wob_ref=\"5\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"6\" data-wob_eps=\"e0\">Username</label><input type=\"text\" id=\"username\" data-wob_ref=\"7\" data-wob_eps=\"e0\" data-tampered=\"e0\"></p>\n      <p data-wob_ref=\"8\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"9\" data-wob_eps=\"e0\">Password</label><input type=\"password\" id=\"password\" data-wob_ref=\"10\" data-wob_eps=\"e0\" data-tampered=\"e0\"></p>\n      <button id=\"subbtn\" class=\"secondary-action\" data-wob_ref=\"11\" data-wob_eps=\"e0\">OK</button>\n    </div>\n  </div>\n</div>",
+            "obs": "Username<input>\nPassword<input>",
+            "act": "agent.type('5Br')\nagent.click_xpath(\"//*[@id='subbtn']\")"
+          },
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Navigate through the file tree. Find and click on the folder or file named \"Karrie\".</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n    <div data-wob_ref=\"4\" data-wob_eps=\"e0\">\n    <ul id=\"tree\" class=\"filetree treeview\" data-wob_ref=\"5\" data-wob_eps=\"e0\"><li data-wob_ref=\"6\" data-wob_eps=\"e0\"><span class=\"file\" data-wob_ref=\"7\" data-wob_eps=\"e0\">Teodoro</span></li><li data-wob_ref=\"8\" data-wob_eps=\"e0\"><span class=\"file\" data-wob_ref=\"9\" data-wob_eps=\"e0\">Beaulah</span></li><li class=\"expandable\" data-wob_ref=\"10\" data-wob_eps=\"e0\"><div class=\"hitarea expandable-hitarea\" data-wob_ref=\"11\" data-wob_eps=\"e0\"></div><span class=\"folder\" data-wob_ref=\"12\" data-wob_eps=\"e0\">Karrie</span><ul style=\"display: none;\"><li><span class=\"file\">Bernardine</span></li><li><span class=\"file\">Ignacio</span></li><li class=\"expandable\"><div class=\"hitarea expandable-hitarea\"></div><span class=\"folder\">Jess</span><ul style=\"display: none;\"></ul></li><li class=\"expandable lastExpandable\"><div class=\"hitarea expandable-hitarea lastExpandable-hitarea\"></div><span class=\"folder\">Dannie</span><ul style=\"display: none;\"></ul></li></ul></li><li class=\"expandable lastExpandable\" data-wob_ref=\"13\" data-wob_eps=\"e0\"><div class=\"hitarea expandable-hitarea lastExpandable-hitarea\" data-wob_ref=\"14\" data-wob_eps=\"e0\"></div><span class=\"folder\" data-wob_ref=\"15\" data-wob_eps=\"e0\">Bernardine</span><ul style=\"display: none;\"></ul></li></ul>\n    </div>\n  </div>\n</div>",
+            "act": "agent.click_xpath(\"(//span[text()='Karrie'])[1]\")"
+          }
+        ]
+      }
+    ]
+  },
+  "login-user_navigate-tree-reverse" : {
+    "demo": [
+      {
+        "task": "Navigate through the file tree. Find and click on the folder or file named Karrie, after entering the username nathalie and the password 5Br into the text fields and press login.",
+        "trajectory": [
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Navigate through the file tree. Find and click on the folder or file named \"Karrie\".</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n    <div data-wob_ref=\"4\" data-wob_eps=\"e0\">\n    <ul id=\"tree\" class=\"filetree treeview\" data-wob_ref=\"5\" data-wob_eps=\"e0\"><li data-wob_ref=\"6\" data-wob_eps=\"e0\"><span class=\"file\" data-wob_ref=\"7\" data-wob_eps=\"e0\">Teodoro</span></li><li data-wob_ref=\"8\" data-wob_eps=\"e0\"><span class=\"file\" data-wob_ref=\"9\" data-wob_eps=\"e0\">Beaulah</span></li><li class=\"expandable\" data-wob_ref=\"10\" data-wob_eps=\"e0\"><div class=\"hitarea expandable-hitarea\" data-wob_ref=\"11\" data-wob_eps=\"e0\"></div><span class=\"folder\" data-wob_ref=\"12\" data-wob_eps=\"e0\">Karrie</span><ul style=\"display: none;\"><li><span class=\"file\">Bernardine</span></li><li><span class=\"file\">Ignacio</span></li><li class=\"expandable\"><div class=\"hitarea expandable-hitarea\"></div><span class=\"folder\">Jess</span><ul style=\"display: none;\"></ul></li><li class=\"expandable lastExpandable\"><div class=\"hitarea expandable-hitarea lastExpandable-hitarea\"></div><span class=\"folder\">Dannie</span><ul style=\"display: none;\"></ul></li></ul></li><li class=\"expandable lastExpandable\" data-wob_ref=\"13\" data-wob_eps=\"e0\"><div class=\"hitarea expandable-hitarea lastExpandable-hitarea\" data-wob_ref=\"14\" data-wob_eps=\"e0\"></div><span class=\"folder\" data-wob_ref=\"15\" data-wob_eps=\"e0\">Bernardine</span><ul style=\"display: none;\"></ul></li></ul>\n    </div>\n  </div>\n</div>",
+            "act": "agent.click_xpath(\"(//span[text()='Karrie'])[1]\")"
+          },
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Enter the <span class=\"bold\">username</span> \"nathalie\" and the <span class=\"bold\">password</span> \"5Br\" into the text fields and press login.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n    <div id=\"form\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n      <p data-wob_ref=\"5\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"6\" data-wob_eps=\"e0\">Username</label><input type=\"text\" id=\"username\" data-wob_ref=\"7\" data-wob_eps=\"e0\"></p>\n      <p data-wob_ref=\"8\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"9\" data-wob_eps=\"e0\">Password</label><input type=\"password\" id=\"password\" data-wob_ref=\"10\" data-wob_eps=\"e0\"></p>\n      <button id=\"subbtn\" class=\"secondary-action\" data-wob_ref=\"11\" data-wob_eps=\"e0\">OK</button>\n    </div>\n  </div>\n</div>",
+            "obs": "Username<input>\nPassword<input>",
+            "act": "agent.click_xpath(\"//*[@id='username']\")"
+          },
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Enter the <span class=\"bold\">username</span> \"nathalie\" and the <span class=\"bold\">password</span> \"5Br\" into the text fields and press login.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\" data-tampered=\"e0\">\n    <div id=\"form\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n      <p data-wob_ref=\"5\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"6\" data-wob_eps=\"e0\">Username</label><input type=\"text\" id=\"username\" data-wob_ref=\"7\" data-wob_eps=\"e0\" disabled=\"disabled\"></p>\n      <p data-wob_ref=\"8\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"9\" data-wob_eps=\"e0\">Password</label><input type=\"password\" id=\"password\" data-wob_ref=\"10\" data-wob_eps=\"e0\" disabled=\"disabled\"></p>\n      <button id=\"subbtn\" class=\"secondary-action\" data-wob_ref=\"11\" data-wob_eps=\"e0\" disabled=\"disabled\">OK</button>\n    </div>\n  <div id=\"popup\" data-wob_ref=\"12\" data-wob_eps=\"e0\">\n        <p data-wob_ref=\"13\" data-wob_eps=\"e0\">Your session is about to time out.</p>\n        <p data-wob_ref=\"14\" data-wob_eps=\"e0\">Exit to home page?</p>\n        <p data-wob_ref=\"15\" data-wob_eps=\"e0\"><button id=\"popup-ok\" data-wob_ref=\"16\" data-wob_eps=\"e0\">OK</button> <button id=\"popup-cancel\" data-wob_ref=\"17\" data-wob_eps=\"e0\">Cancel</button></p></div></div>\n</div>",
+            "obs": "Your session is about to time out.\nExit to home page?",
+            "act": "agent.click_xpath(\"//*[@id='popup-cancel']\")\nagent.click_xpath(\"//*[@id='username']\")\nagent.type('nathalie')\nagent.click_xpath(\"//*[@id='password']\")"
+          },
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Enter the <span class=\"bold\">username</span> \"nathalie\" and the <span class=\"bold\">password</span> \"5Br\" into the text fields and press login.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\" data-tampered=\"e0\">\n    <div id=\"form\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n      <p data-wob_ref=\"5\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"6\" data-wob_eps=\"e0\">Username</label><input type=\"text\" id=\"username\" data-wob_ref=\"7\" data-wob_eps=\"e0\" data-tampered=\"e0\"></p>\n      <p data-wob_ref=\"8\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"9\" data-wob_eps=\"e0\">Password</label><input type=\"password\" id=\"password\" data-wob_ref=\"10\" data-wob_eps=\"e0\" data-tampered=\"e0\"></p>\n      <button id=\"subbtn\" class=\"secondary-action\" data-wob_ref=\"11\" data-wob_eps=\"e0\">OK</button>\n    </div>\n  </div>\n</div>",
+            "obs": "Username<input>\nPassword<input>",
+            "act": "agent.type('5Br')\nagent.click_xpath(\"//*[@id='subbtn']\")"
+          }
+        ]
+      }
+    ]
   }
 }
