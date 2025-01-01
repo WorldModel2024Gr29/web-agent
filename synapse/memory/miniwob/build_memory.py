@@ -62,8 +62,12 @@ EXEMPLAR_LIST = [
     "use-autocomplete",
     "use-slider",
     "use-spinner",
-    "click-button_click-dialog",  # tmp
-    "click-button_click-dialog-reverse",  # tmp
+
+    # CompWoB
+    "click-button_click-dialog",
+    "click-button_click-dialog-reverse",
+    "click-checkboxes-soft_enter-password",
+    "click-checkboxes-soft_enter-password-reverse",
 ]
 
 

@@ -1352,5 +1352,39 @@
         ]
       }
     ]
+  },
+  "click-checkboxes-soft_enter-password": {
+    "demo":[
+      {
+        "task": "Select words similar to despise, water, end, immoral and then enter the password E5B into both text fields and press submit.",
+        "trajectory": [
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Select words similar to despise, water, end, immoral and click Submit.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n    <div id=\"boxes\" data-wob_ref=\"4\" data-wob_eps=\"e0\"><label data-wob_ref=\"5\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch0\" data-wob_ref=\"6\" data-wob_eps=\"e0\">water</label><br><label data-wob_ref=\"7\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch1\" data-wob_ref=\"8\" data-wob_eps=\"e0\">sinful</label><br><label data-wob_ref=\"9\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch2\" data-wob_ref=\"10\" data-wob_eps=\"e0\">finish</label><br><label data-wob_ref=\"11\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch3\" data-wob_ref=\"12\" data-wob_eps=\"e0\">fearless</label><br><label data-wob_ref=\"13\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch4\" data-wob_ref=\"14\" data-wob_eps=\"e0\">aged</label><br><label data-wob_ref=\"15\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch5\" data-wob_ref=\"16\" data-wob_eps=\"e0\">loathe</label><br></div>\n    <br>\n    <button id=\"subbtn\" class=\"secondary-action\" data-wob_ref=\"17\" data-wob_eps=\"e0\">Submit</button>\n  </div>\n</div>",
+            "act": "# The four words similar to {'despise', 'water', 'end', 'immoral'} are {'loathe', 'water', 'finish', 'sinful'}, respectively.\nagent.click_xpath(\"//label[text() = 'loathe']/input\")\nagent.click_xpath(\"//label[text() = 'water']/input\")\nagent.click_xpath(\"//label[text() = 'finish']/input\")\nagent.click_xpath(\"//label[text() = 'sinful']/input\")\nagent.click_xpath(\"//*[@id='subbtn']\")"
+          },
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Enter the password \"<span class=\"bold\">E5B</span>\" into both text fields and press submit.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n    <div id=\"form\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n      <p data-wob_ref=\"5\" data-wob_eps=\"e0\"><label data-wob_ref=\"6\" data-wob_eps=\"e0\">Password</label><input type=\"password\" id=\"password\" data-wob_ref=\"7\" data-wob_eps=\"e0\"></p>\n      <p data-wob_ref=\"8\" data-wob_eps=\"e0\"><label data-wob_ref=\"9\" data-wob_eps=\"e0\">Verify password</label><input type=\"password\" id=\"verify\" data-wob_ref=\"10\" data-wob_eps=\"e0\"></p>\n      <button id=\"subbtn\" class=\"secondary-action\" data-wob_ref=\"11\" data-wob_eps=\"e0\">Submit</button>\n    </div>\n  </div>\n</div>",
+            "act": "agent.click_xpath(\"//*[@id='password']\")\nagent.type('E5B')\nagent.click_xpath(\"//*[@id='verify']\")\nagent.type('E5B')\nagent.click_xpath(\"//*[@id='subbtn']\")"
+          }
+        ]
+      }
+    ]
+  },
+  "click-checkboxes-soft_enter-password-reverse": {
+    "demo": [
+      {
+        "task": "Enter the password E5B into both text fields and press submit, after selecting words similar to despise, water, end, immoral.",
+        "trajectory": [
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Enter the password \"<span class=\"bold\">E5B</span>\" into both text fields and press submit.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n    <div id=\"form\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n      <p data-wob_ref=\"5\" data-wob_eps=\"e0\"><label data-wob_ref=\"6\" data-wob_eps=\"e0\">Password</label><input type=\"password\" id=\"password\" data-wob_ref=\"7\" data-wob_eps=\"e0\"></p>\n      <p data-wob_ref=\"8\" data-wob_eps=\"e0\"><label data-wob_ref=\"9\" data-wob_eps=\"e0\">Verify password</label><input type=\"password\" id=\"verify\" data-wob_ref=\"10\" data-wob_eps=\"e0\"></p>\n      <button id=\"subbtn\" class=\"secondary-action\" data-wob_ref=\"11\" data-wob_eps=\"e0\">Submit</button>\n    </div>\n  </div>\n</div>",
+            "act": "agent.click_xpath(\"//*[@id='password']\")\nagent.type('E5B')\nagent.click_xpath(\"//*[@id='verify']\")\nagent.type('E5B')\nagent.click_xpath(\"//*[@id='subbtn']\")"
+          },
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Select words similar to despise, water, end, immoral and click Submit.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n    <div id=\"boxes\" data-wob_ref=\"4\" data-wob_eps=\"e0\"><label data-wob_ref=\"5\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch0\" data-wob_ref=\"6\" data-wob_eps=\"e0\">water</label><br><label data-wob_ref=\"7\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch1\" data-wob_ref=\"8\" data-wob_eps=\"e0\">sinful</label><br><label data-wob_ref=\"9\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch2\" data-wob_ref=\"10\" data-wob_eps=\"e0\">finish</label><br><label data-wob_ref=\"11\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch3\" data-wob_ref=\"12\" data-wob_eps=\"e0\">fearless</label><br><label data-wob_ref=\"13\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch4\" data-wob_ref=\"14\" data-wob_eps=\"e0\">aged</label><br><label data-wob_ref=\"15\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch5\" data-wob_ref=\"16\" data-wob_eps=\"e0\">loathe</label><br></div>\n    <br>\n    <button id=\"subbtn\" class=\"secondary-action\" data-wob_ref=\"17\" data-wob_eps=\"e0\">Submit</button>\n  </div>\n</div>",
+            "act": "# The four words similar to {'despise', 'water', 'end', 'immoral'} are {'loathe', 'water', 'finish', 'sinful'}, respectively.\nagent.click_xpath(\"//label[text() = 'loathe']/input\")\nagent.click_xpath(\"//label[text() = 'water']/input\")\nagent.click_xpath(\"//label[text() = 'finish']/input\")\nagent.click_xpath(\"//label[text() = 'sinful']/input\")\nagent.click_xpath(\"//*[@id='subbtn']\")"
+          }
+        ]
+      }
+    ]
   }
 }
