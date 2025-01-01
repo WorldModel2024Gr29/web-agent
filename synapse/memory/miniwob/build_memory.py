@@ -68,6 +68,7 @@ EXEMPLAR_LIST = [
     "click-button_click-dialog-reverse",
     "click-checkboxes-soft_enter-password",
     "click-checkboxes-soft_enter-password-reverse",
+    "click-link_click-dialog",
 ]
 
 
