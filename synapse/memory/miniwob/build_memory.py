@@ -74,6 +74,7 @@ EXEMPLAR_LIST = [
     "login-user_navigate-tree-reverse",
     "multi-layouts_login-user",
     "multi-layouts_login-user-reverse",
+    "enter-password_click-checkboxes_login-user-popup",
 ]
 
 
