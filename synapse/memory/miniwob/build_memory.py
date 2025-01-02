@@ -94,6 +94,8 @@ EXEMPLAR_LIST = [
     "click-link_enter-text-reverse",
     "click-option_enter-text",
     "click-option_enter-text-reverse",
+    "click-checkboxes-transfer_enter-password_click-dialog",
+    "click-checkboxes-transfer_enter-password_click-dialog-reverse",
 ]
 
 
