@@ -44,7 +44,7 @@ def timer(name):
     print(f"\n[{name}] done in {m:.0f}:{s:.0f}s\n")
 
 
-def run(env_name: str, args: dict[str, str]):
+def run(env_name: str, args: dict[str, str], seed: int):
     if env_name in error_tasks:
         return False  # pass
 
@@ -52,7 +52,7 @@ def run(env_name: str, args: dict[str, str]):
         "run_miniwob.py",
         "--env_name", env_name,
         "--model", args["model"],
-        "--seed", args["seed"],
+        "--seed", str(seed),
         "--num_episodes", args["num_episodes"]
     ]
     if args["headress"]:
@@ -61,8 +61,9 @@ def run(env_name: str, args: dict[str, str]):
     return succeed
 
 
-def run_all_compwob_tasks(args, seeds):
+def run_all_compwob_tasks(args):
     results = {}
+    seeds = args["seeds"]
 
     no = 1
     total_no = len(COMPWOB_TASKS) * len(seeds)
@@ -72,8 +73,7 @@ def run_all_compwob_tasks(args, seeds):
             with timer(f"{env_name} - seed:{seed}"):
                 print(f"\n{'=' * 100}\n[{no}/{total_no}] Task: {env_name}")
                 no += 1
-                args["seed"] = seed
-                succeed = run(env_name, args)
+                succeed = run(env_name, args, seed)
                 cprint(f"succeed: {succeed}", "green" if succeed else "red")
                 task_succeed_sum += succeed
 
@@ -82,12 +82,11 @@ def run_all_compwob_tasks(args, seeds):
     return results
 
 
-def _write_args(writer: Any, args: dict[str, str], seeds: [str]) -> None:
-    args_seeds = ','.join(seeds)
-    args["seed"] = args_seeds
-
+def _write_args(writer: Any, args: dict[str, str]) -> None:
     writer.writerow(["args"])
     for key, value in args.items():
+        if key == "seeds":
+            value = ','.join(map(str, value))
         writer.writerow([key, value])
 
 
@@ -125,8 +124,8 @@ def _write_success_rate(writer: Any, compwob_results: dict) -> None:
     writer.writerow(["total success rate(%)", total_task_success_rate])
 
 
-def _write_task_results(writer: Any, compwob_results: dict, seeds: list[str]) -> None:
-    writer.writerow(["task", f"success rate(ave n={len(seeds)})"])
+def _write_task_results(writer: Any, compwob_results: dict, seeds: list[int]) -> None:
+    writer.writerow(["task", f"success rate (ave, n={len(seeds)})"])
     for key, value in compwob_results.items():
         writer.writerow([key, value])
 
@@ -135,7 +134,7 @@ def _write_empty_line(writer: Any) -> None:
     writer.writerow([])
 
 
-def save_results_to_csv(args, seeds, compwob_results):
+def save_results_to_csv(args, compwob_results):
     directory = "results/compwob"
     if not os.path.exists(directory):
         os.makedirs(directory)
@@ -147,31 +146,30 @@ def save_results_to_csv(args, seeds, compwob_results):
         writer = csv.writer(file)
         writer.writerow(["compwob results"])
 
-        _write_args(writer, args, seeds)
+        _write_args(writer, args)
         _write_empty_line(writer)
         _write_success_rate(writer, compwob_results)
         _write_empty_line(writer)
-        _write_task_results(writer, compwob_results, seeds)
+        _write_task_results(writer, compwob_results, args["seeds"])
 
     print(f"Success: save result to '{file_name}'")
 
 
 def main():
+    SEEDS_COUNT = 5
     args = {
         "model": "gpt-3.5-turbo-1106",
-        "seed": "0",
+        "seeds": [seed for seed in range(SEEDS_COUNT)],
         "num_episodes": "1",
         "headress": True,
     }
-    SEEDS_COUNT = 5
-    seeds = [str(seed) for seed in range(SEEDS_COUNT)]
     try:
-        compwob_results = run_all_compwob_tasks(args, seeds)
+        compwob_results = run_all_compwob_tasks(args)
     except Exception as e:
         print(f"error during task execution: {e}")
     finally:
         # 結果を保存
-        save_results_to_csv(args, seeds, compwob_results if compwob_results else {})
+        save_results_to_csv(args, compwob_results if compwob_results else {})
 
 
 if __name__ == "__main__":
