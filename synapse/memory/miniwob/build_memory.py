@@ -77,6 +77,8 @@ EXEMPLAR_LIST = [
     "enter-password_click-checkboxes_login-user-popup",
     "use-autocomplete_click-dialog",
     "use-autocomplete_click-dialog-reverse",
+    "click-button-sequence_use-autocomplete",
+    "click-button-sequence_use-autocomplete-reverse",
 ]
 
 
