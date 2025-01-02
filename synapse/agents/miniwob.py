@@ -91,8 +91,13 @@ class Agent:
             else:
                 exemplar_name = self.args.env_name
         else:
-            query = "Task: " + self.task + "\nState:\n" + self.state
-            exemplar_name = retrieve_exemplar_name(self.memory, query, 3)
+            if self.args.env_name == "click-button_click-dialog" or self.args.env_name == "click-button_click-dialog-reverse":
+                # retrieve_exemplar_nameを呼ぶとclick-butttonのdemoを参照してしまうため、強制的に変更
+                exemplar_name = self.args.env_name
+            else:
+                query = "Task: " + self.task + "\nState:\n" + self.state
+                exemplar_name = retrieve_exemplar_name(self.memory, query, 3)
+        return exemplar_name
 
         self.log_path = Path(
             os.path.join(
