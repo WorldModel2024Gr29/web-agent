@@ -1,7 +1,7 @@
 import os
 
 from synapse.envs.miniwob.instance import MiniWoBInstance
-from termcolor import cprint
+from debug import debug_cprint
 
 MINIWOB_DIR = os.path.join(
     os.path.dirname(os.path.realpath(__file__)), "html", "miniwob/"
@@ -199,31 +199,31 @@ class MiniWoBEnv(object):
         Returns:
             obs (str)
         """
-        cprint(f"env.reset()", "blue")
+        debug_cprint(f"env.reset()", "blue")
 
         self.configure(seed=seed)
         self.set_record_screenshots(record_screenshots)
 
         states = [None]
-        # cprint(f" states before instance.call: \n[{states}]", "blue")
-        cprint(f"  instance.call()", "blue")
+        # debug_cprint(f" states before instance.call: \n[{states}]", "blue")
+        debug_cprint(f"  instance.call()", "blue")
         self.instance.call(self.instance.reset, states, seed)  # HTML取得
-        cprint(f"  instance.wait()", "blue")
+        debug_cprint(f"  instance.wait()", "blue")
         self.instance.wait()
 
-        cprint(f" states after instance.call : \n[{states}]", "blue")
-        cprint(f"   len(states) : {len(states)}", "blue")
-        cprint(f"   states[0].html_body : \n[{states[0].html_body}]", "blue")
-        cprint(f"   states[0].html_extra : \n[{states[0].html_extra}]", "blue")
+        debug_cprint(f" states after instance.call : \n[{states}]", "blue")
+        debug_cprint(f"   len(states) : {len(states)}", "blue")
+        debug_cprint(f"   states[0].html_body : \n[{states[0].html_body}]", "blue")
+        debug_cprint(f"   states[0].html_extra : \n[{states[0].html_extra}]", "blue")
 
-        cprint(f" obs = self.state2html(states)", "blue")
+        debug_cprint(f" obs = self.state2html(states)", "blue")
         obs = self.state2html(states)
-        cprint(f" obs: [\n{obs}\n]", "blue")
+        debug_cprint(f" obs: [\n{obs}\n]", "blue")
 
         self.task = states[0].utterance
 
         # DOMからQueryを抽出？
-        cprint(f" task: {self.task}\n", "blue")
+        debug_cprint(f" task: {self.task}\n", "blue")
         return obs
 
     def step(self, action):

@@ -12,6 +12,8 @@ logger = logging.getLogger(__name__)
 from dotenv import load_dotenv
 load_dotenv()
 
+from debug import debug_cprint, enable_debug
+
 
 EXEMPLAR_LIST = [
     "book-flight",
@@ -100,7 +102,9 @@ EXEMPLAR_LIST = [
 
 
 def build_memory(memory_path: str):
-    # print(f"memory_path: {memory_path}")
+    # enable_debug()
+
+    debug_cprint(f"memory_path: {memory_path}", "white")
     with open(os.path.join(memory_path, "specifiers.json"), "r") as rf:
         specifier_dict = json.load(rf)
         exemplar_names = []
@@ -110,10 +114,10 @@ def build_memory(memory_path: str):
             for query in v:
                 exemplar_names.append(k)
                 specifiers.append(query)
-    # print(f"len(list(set(exemplar_names))): {len(list(set(exemplar_names)))}")
-    # print(f"len(EXEMPLAR_LIST): {len(EXEMPLAR_LIST)}")
-    # missing_elements = set(EXEMPLAR_LIST) - set(exemplar_names)
-    # print(f"missing: {missing_elements}")
+    debug_cprint(f"len(list(set(exemplar_names))): {len(list(set(exemplar_names)))}", "white")
+    debug_cprint(f"len(EXEMPLAR_LIST): {len(EXEMPLAR_LIST)}", "white")
+    missing_elements = set(EXEMPLAR_LIST) - set(exemplar_names)
+    debug_cprint(f"missing: {missing_elements}", "white")
     assert sorted(list(set(exemplar_names))) == sorted(EXEMPLAR_LIST)
 
     # embed memory_keys into VectorDB
@@ -133,16 +137,16 @@ def retrieve_exemplar_name(memory, query: str, top_k) -> str:
     """
     FAISSからqueryに近い要素をtop_k取得し、最頻値のnameを返す
     """
-    print(f"memory retrieve_exemplar_name()")
+    debug_cprint(f"memory retrieve_exemplar_name()", "white")
     retriever = memory.as_retriever(search_kwargs={"k": top_k})
-    print(f" retriever: {retriever}")
+    debug_cprint(f" retriever: {retriever}", "white")
     docs = retriever.get_relevant_documents(query)
-    print(f" docs: {docs}")
+    debug_cprint(f" docs: {docs}", "white")
     retrieved_exemplar_names = [doc.metadata["name"] for doc in docs]
-    print(f" retrieved_exemplar_names: {retrieved_exemplar_names}")
+    debug_cprint(f" retrieved_exemplar_names: {retrieved_exemplar_names}", "white")
     logger.info(f"Retrieved exemplars: {retrieved_exemplar_names}")
     data = Counter(retrieved_exemplar_names)
-    print(f" data: {data}")
+    debug_cprint(f" data: {data}", "white")
     retrieved_exemplar_name = data.most_common(1)[0][0]
 
     return retrieved_exemplar_name

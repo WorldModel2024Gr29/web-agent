@@ -16,16 +16,73 @@ from synapse.envs.miniwob.environment import COMPWOB_TASKS
 import logging
 import urllib3
 
+from debug import enable_debug, disable_debug, debug_cprint
+
 # urllib3のwarningを抑制
 logging.getLogger("urllib3").setLevel(logging.ERROR)
 
 
 # 単体動作用
 # COMPWOB_TASKS = [
+    ## miniwob
+    # "login-user-popup",
+    # "use-autocomplete",
+    # "click-button",
+    # "click-dialog",
+    # "click-checkboxes-soft"
+    # "enter-date",
+    # "login-user",
+    # "navigate-tree",
+    # "multi-layouts",
+    # "click-option"
+
+    ## compwob
     # "click-option_enter-text",
     # "click-button_enter-text",
     # "use-autocomplete_click-dialog",
-    # "use-autocomplete_click-dialog-reverse"
+    # "use-autocomplete_click-dialog-reverse",
+    # "click-button-sequence_use-autocomplete",
+
+    # "click-button_click-dialog",
+    # "click-button_click-dialog-reverse",
+
+    # "click-option_login-user",
+    # "click-option_login-user-transition",
+
+    # "click-checkboxes-soft_enter-password",
+    # "click-checkboxes-soft_enter-password-reverse",
+    # "click-link_click-dialog",
+    # "enter-date_login-user",
+    # "login-user_navigate-tree",
+    # "login-user_navigate-tree-reverse",
+    # "login-user_navigate-tree-transition",
+    # "login-user_navigate-tree-transition-reverse",
+    # "multi-layouts_login-user",
+    # "multi-layouts_login-user-reverse",
+    # "enter-password_click-checkboxes_login-user-popup",
+    # "click-checkboxes-transfer_enter-password_click-dialog"
+
+    # 低成功率
+    # "click-button-sequence_use-autocomplete",
+    # "click-button-sequence_use-autocomplete-reverse",
+    # "click-button_click-dialog",  # ok
+    # "click-button_click-dialog-reverse",  # ok
+    # "click-checkboxes-soft_multi-layouts-reverse",
+    # "click-dialog-2_click-widget",
+    # "click-dialog-2_click-widget-reverse",
+    # "click-dialog-2_login-user-popup",
+    # "click-dialog-2_login-user-popup-reverse",
+    # "click-dialog_search-engine-reverse",
+    # "click-link_click-dialog",  # ok
+    # "click-link_click-dialog-reverse",  # ok
+    # "enter-date_login-user",  # ok
+    # "enter-date_login-user-reverse",  # ok
+    # "enter-password_click-checkboxes_login-user-popup",
+    # "enter-password_click-checkboxes_login-user-popup-reverse",
+    # "multi-layouts_login-user",
+    # "multi-layouts_login-user-reverse",
+    # "use-autocomplete_click-dialog",
+    # "use-autocomplete_click-dialog-revers",
 # ]
 
 error_tasks = [
@@ -156,12 +213,14 @@ def save_results_to_csv(args, compwob_results):
 
 
 def main():
-    SEEDS_COUNT = 5
+    SEEDS_START = 0
+    SEEDS_COUNT = 1
     args = {
         "model": "gpt-3.5-turbo-1106",
-        "seeds": [seed for seed in range(SEEDS_COUNT)],
+        "seeds": [seed for seed in range(SEEDS_START, SEEDS_START + SEEDS_COUNT)],
         "num_episodes": "1",
-        "headress": True,
+        # "headress": True,
+        "headress": False,
     }
     try:
         compwob_results = run_all_compwob_tasks(args)
@@ -173,5 +232,6 @@ def main():
 
 
 if __name__ == "__main__":
+    # enable_debug()
     with timer("run_compwob"):
         main()
