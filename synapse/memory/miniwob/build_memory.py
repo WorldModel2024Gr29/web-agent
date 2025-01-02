@@ -83,6 +83,8 @@ EXEMPLAR_LIST = [
     "click-checkboxes-soft_multi-layouts-reverse",
     "click-dialog-2_click-widget",
     "click-dialog-2_click-widget-reverse",
+    "click-dialog-2_login-user-popup",
+    "click-dialog-2_login-user-popup-reverse",
 ]
 
 
