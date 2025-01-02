@@ -75,6 +75,8 @@ EXEMPLAR_LIST = [
     "multi-layouts_login-user",
     "multi-layouts_login-user-reverse",
     "enter-password_click-checkboxes_login-user-popup",
+    "use-autocomplete_click-dialog",
+    "use-autocomplete_click-dialog-reverse",
 ]
 
 
