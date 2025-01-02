@@ -91,7 +91,9 @@ EXEMPLAR_LIST = [
     "click-dialog_search-engine",
     "click-dialog_search-engine-reverse",
     "click-link_enter-text",
-    "click-link_enter-text-reverse"
+    "click-link_enter-text-reverse",
+    "click-option_enter-text",
+    "click-option_enter-text-reverse",
 ]
 
 

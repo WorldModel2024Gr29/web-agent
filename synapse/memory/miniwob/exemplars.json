@@ -1926,5 +1926,39 @@
         ]
       }
     ]
+  },
+  "click-option_enter-text": {
+    "demo": [
+      {
+        "task": "Select WyhK5, 9Ba, knlOUNT, rbFpeh7, PEFB2g, okBDxo, gFeBN, and then enter reZpD into the text field and press Submit.",
+        "trajectory": [
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Select WyhK5, 9Ba, knlOUNT, rbFpeh7, PEFB2g, okBDxo, gFeBN and click Submit.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n    <div id=\"boxes-left\" data-wob_ref=\"4\" data-wob_eps=\"e0\"><label data-wob_ref=\"5\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch0\" data-wob_ref=\"6\" data-wob_eps=\"e0\">BreZpDT</label><br><label data-wob_ref=\"7\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch1\" data-wob_ref=\"8\" data-wob_eps=\"e0\">rbFpeh7</label><br><label data-wob_ref=\"9\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch2\" data-wob_ref=\"10\" data-wob_eps=\"e0\">3hYpws</label><br><label data-wob_ref=\"11\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch3\" data-wob_ref=\"12\" data-wob_eps=\"e0\">gFeBN</label><br><label data-wob_ref=\"13\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch4\" data-wob_ref=\"14\" data-wob_eps=\"e0\">WyhK5</label><br></div>\n    <div id=\"boxes-right\" data-wob_ref=\"15\" data-wob_eps=\"e0\"><label data-wob_ref=\"16\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch5\" data-wob_ref=\"17\" data-wob_eps=\"e0\">PEFB2g</label><br><label data-wob_ref=\"18\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch6\" data-wob_ref=\"19\" data-wob_eps=\"e0\">knlOUNT</label><br><label data-wob_ref=\"20\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch7\" data-wob_ref=\"21\" data-wob_eps=\"e0\">okBDxo</label><br><label data-wob_ref=\"22\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch8\" data-wob_ref=\"23\" data-wob_eps=\"e0\">9Ba</label><br></div>\n    <br>\n    <button id=\"subbtn\" class=\"secondary-action\" data-wob_ref=\"24\" data-wob_eps=\"e0\">Submit</button>\n  </div>\n</div>",
+            "act": "agent.click_xpath(\"//label[text() = 'WyhK5']/input\")\nagent.click_xpath(\"//label[text() = '9Ba']/input\")\nagent.click_xpath(\"//label[text() = 'knlOUNT']/input\")\nagent.click_xpath(\"//label[text() = 'rbFpeh7']/input\")\nagent.click_xpath(\"//label[text() = 'PEFB2g']/input\")\nagent.click_xpath(\"//label[text() = 'okBDxo']/input\")\nagent.click_xpath(\"//label[text() = 'gFeBN']/input\")\nagent.click_xpath(\"//*[@id='subbtn']\")"
+          },
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Enter \"<span class=\"bold\">reZpD</span>\" into the text field and press Submit.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n    <div id=\"form\" style=\"margin-left:7px;margin-top:9px;\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n      <input type=\"text\" id=\"tt\" data-wob_ref=\"5\" data-wob_eps=\"e0\">\n      <button id=\"subbtn\" class=\"secondary-action\" style=\"margin-top:18px;\" data-wob_ref=\"6\" data-wob_eps=\"e0\">Submit</button>\n    </div>\n  </div>\n</div>",
+            "act": "agent.click_xpath(\"//*[@id='tt']\")\nagent.type('reZpD')\nagent.click_xpath(\"//*[@id='subbtn']\")"
+          }
+        ]
+      }
+    ]
+  },
+  "click-option_enter-text-reverse": {
+    "demo": [
+      {
+        "task": "Enter reZpD into the text field and press Submit, after selecting WyhK5, 9Ba, knlOUNT, rbFpeh7, PEFB2g, okBDxo, gFeBN.",
+        "trajectory": [
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Select WyhK5, 9Ba, knlOUNT, rbFpeh7, PEFB2g, okBDxo, gFeBN and click Submit.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n    <div id=\"boxes-left\" data-wob_ref=\"4\" data-wob_eps=\"e0\"><label data-wob_ref=\"5\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch0\" data-wob_ref=\"6\" data-wob_eps=\"e0\">BreZpDT</label><br><label data-wob_ref=\"7\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch1\" data-wob_ref=\"8\" data-wob_eps=\"e0\">rbFpeh7</label><br><label data-wob_ref=\"9\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch2\" data-wob_ref=\"10\" data-wob_eps=\"e0\">3hYpws</label><br><label data-wob_ref=\"11\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch3\" data-wob_ref=\"12\" data-wob_eps=\"e0\">gFeBN</label><br><label data-wob_ref=\"13\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch4\" data-wob_ref=\"14\" data-wob_eps=\"e0\">WyhK5</label><br></div>\n    <div id=\"boxes-right\" data-wob_ref=\"15\" data-wob_eps=\"e0\"><label data-wob_ref=\"16\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch5\" data-wob_ref=\"17\" data-wob_eps=\"e0\">PEFB2g</label><br><label data-wob_ref=\"18\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch6\" data-wob_ref=\"19\" data-wob_eps=\"e0\">knlOUNT</label><br><label data-wob_ref=\"20\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch7\" data-wob_ref=\"21\" data-wob_eps=\"e0\">okBDxo</label><br><label data-wob_ref=\"22\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch8\" data-wob_ref=\"23\" data-wob_eps=\"e0\">9Ba</label><br></div>\n    <br>\n    <button id=\"subbtn\" class=\"secondary-action\" data-wob_ref=\"24\" data-wob_eps=\"e0\">Submit</button>\n  </div>\n</div>",
+            "act": "agent.click_xpath(\"//label[text() = 'WyhK5']/input\")\nagent.click_xpath(\"//label[text() = '9Ba']/input\")\nagent.click_xpath(\"//label[text() = 'knlOUNT']/input\")\nagent.click_xpath(\"//label[text() = 'rbFpeh7']/input\")\nagent.click_xpath(\"//label[text() = 'PEFB2g']/input\")\nagent.click_xpath(\"//label[text() = 'okBDxo']/input\")\nagent.click_xpath(\"//label[text() = 'gFeBN']/input\")\nagent.click_xpath(\"//*[@id='subbtn']\")"
+          },
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Enter \"<span class=\"bold\">reZpD</span>\" into the text field and press Submit.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n    <div id=\"form\" style=\"margin-left:7px;margin-top:9px;\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n      <input type=\"text\" id=\"tt\" data-wob_ref=\"5\" data-wob_eps=\"e0\">\n      <button id=\"subbtn\" class=\"secondary-action\" style=\"margin-top:18px;\" data-wob_ref=\"6\" data-wob_eps=\"e0\">Submit</button>\n    </div>\n  </div>\n</div>",
+            "act": "agent.click_xpath(\"//*[@id='tt']\")\nagent.type('reZpD')\nagent.click_xpath(\"//*[@id='subbtn']\")"
+          }
+        ]
+      }
+    ]
   }
 }
