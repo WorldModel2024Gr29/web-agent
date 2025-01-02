@@ -1404,10 +1404,50 @@
       }
     ]
   },
+  "click-link_click-dialog-reverse": {
+    "demo": [
+      {
+        "task": "Close the dialog box by clicking the x, after clicking on the link nulla.",
+        "trajectory": [
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Click on the link \"nulla\".</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">Suspendisse neque,. Sagittis vitae ut vitae proin. Fermentum pulvinar convallis imperdiet. Dolor. <span class=\"alink\" data-wob_ref=\"4\" data-wob_eps=\"e0\">Tempus</span> nisl. Rutrum diam aliquam <span class=\"alink\" data-wob_ref=\"5\" data-wob_eps=\"e0\">nulla</span> sit porta.</div>\n</div>",
+            "act": "agent.click_xpath(\"//*[@class='alink' and text()='nulla']\")"
+          },
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Close the dialog box by clicking the \"x\".</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\"></div>\n</div>\n<div tabindex=\"-1\" role=\"dialog\" class=\"ui-dialog ui-corner-all ui-widget ui-widget-content ui-front ui-draggable ui-resizable\" aria-describedby=\"dialog\" aria-labelledby=\"ui-id-1\" style=\"position: absolute; height: 71px; width: 94px; top: 73px; left: 0px; display: block; margin: 1px 17px;\" data-wob_ref=\"4\" data-wob_eps=\"e0\"><div class=\"ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle\" data-wob_ref=\"5\" data-wob_eps=\"e0\"><span id=\"ui-id-1\" class=\"ui-dialog-title\" data-wob_ref=\"6\" data-wob_eps=\"e0\">&nbsp;</span><button type=\"button\" class=\"ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close\" title=\"Close\" data-wob_ref=\"7\" data-wob_eps=\"e0\"><span class=\"ui-button-icon ui-icon ui-icon-closethick\" data-wob_ref=\"8\" data-wob_eps=\"e0\"></span><span class=\"ui-button-icon-space\"> </span>Close</button></div><div id=\"dialog\" class=\"ui-dialog-content ui-widget-content\" style=\"width: auto; min-height: 0px; max-height: none; height: 12px;\" data-wob_ref=\"9\" data-wob_eps=\"e0\"><p data-wob_ref=\"10\" data-wob_eps=\"e0\">Suspendisse neque,. Sagittis vitae ut.</p></div><div class=\"ui-resizable-handle ui-resizable-n\" style=\"z-index: 90;\" data-wob_ref=\"11\" data-wob_eps=\"e0\"></div><div class=\"ui-resizable-handle ui-resizable-e\" style=\"z-index: 90;\" data-wob_ref=\"12\" data-wob_eps=\"e0\"></div><div class=\"ui-resizable-handle ui-resizable-s\" style=\"z-index: 90;\" data-wob_ref=\"13\" data-wob_eps=\"e0\"></div><div class=\"ui-resizable-handle ui-resizable-w\" style=\"z-index: 90;\" data-wob_ref=\"14\" data-wob_eps=\"e0\"></div><div class=\"ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se\" style=\"z-index: 90;\" data-wob_ref=\"15\" data-wob_eps=\"e0\"></div><div class=\"ui-resizable-handle ui-resizable-sw\" style=\"z-index: 90;\" data-wob_ref=\"16\" data-wob_eps=\"e0\"></div><div class=\"ui-resizable-handle ui-resizable-ne\" style=\"z-index: 90;\" data-wob_ref=\"17\" data-wob_eps=\"e0\"></div><div class=\"ui-resizable-handle ui-resizable-nw\" style=\"z-index: 90;\" data-wob_ref=\"18\" data-wob_eps=\"e0\"></div></div>",
+            "act": "agent.click_xpath(\"//button[@title='Close']\")"
+          }
+        ]
+      }
+    ]
+  },
   "enter-date_login-user": {
     "demo": [
       {
         "task": "Enter 08/20/2013 as the date, and then enter the username nathalie and the password 5Br into the text fields and press login.",
+        "trajectory": [
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Enter <span class=\"bold\">08/20/2013</span> as the date and hit submit.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n    <div id=\"form\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n      <input type=\"date\" id=\"tt\" data-wob_ref=\"5\" data-wob_eps=\"e0\">\n      <button id=\"subbtn\" class=\"secondary-action\" data-wob_ref=\"6\" data-wob_eps=\"e0\">Submit</button>\n    </div>\n  </div>\n</div>",
+            "act": "agent.click_xpath(\"//*[@id='tt']\")\nagent.press(\"arrowleft\")\nagent.press(\"arrowleft\")\nagent.type('08/20/2013')\nagent.click_xpath(\"//*[@id='subbtn']\")"
+          },
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Enter the <span class=\"bold\">username</span> \"nathalie\" and the <span class=\"bold\">password</span> \"5Br\" into the text fields and press login.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n    <div id=\"form\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n      <p data-wob_ref=\"5\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"6\" data-wob_eps=\"e0\">Username</label><input type=\"text\" id=\"username\" data-wob_ref=\"7\" data-wob_eps=\"e0\"></p>\n      <p data-wob_ref=\"8\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"9\" data-wob_eps=\"e0\">Password</label><input type=\"password\" id=\"password\" data-wob_ref=\"10\" data-wob_eps=\"e0\"></p>\n      <button id=\"subbtn\" class=\"secondary-action\" data-wob_ref=\"11\" data-wob_eps=\"e0\">OK</button>\n    </div>\n  </div>\n</div>",
+            "obs": "Username<input>\nPassword<input>",
+            "act": "agent.click_xpath(\"//*[@id='username']\")"
+          },
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Enter the <span class=\"bold\">username</span> \"nathalie\" and the <span class=\"bold\">password</span> \"5Br\" into the text fields and press login.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\" data-tampered=\"e0\">\n    <div id=\"form\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n      <p data-wob_ref=\"5\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"6\" data-wob_eps=\"e0\">Username</label><input type=\"text\" id=\"username\" data-wob_ref=\"7\" data-wob_eps=\"e0\" data-tampered=\"e0\"></p>\n      <p data-wob_ref=\"8\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"9\" data-wob_eps=\"e0\">Password</label><input type=\"password\" id=\"password\" data-wob_ref=\"10\" data-wob_eps=\"e0\" data-tampered=\"e0\"></p>\n      <button id=\"subbtn\" class=\"secondary-action\" data-wob_ref=\"11\" data-wob_eps=\"e0\">OK</button>\n    </div>\n  </div>\n</div>",
+            "obs": "Username<input>\nPassword<input>",
+            "act": "agent.type('5Br')\nagent.click_xpath(\"//*[@id='subbtn']\")"
+          }
+        ]
+      }
+    ]
+  },
+  "enter-date_login-user-reverse": {
+    "demo": [
+      {
+        "task": "Enter the username nathalie and the password 5Br into the text fields and press login, after entering 08/20/2013 as the date.",
         "trajectory": [
           {
             "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Enter <span class=\"bold\">08/20/2013</span> as the date and hit submit.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n    <div id=\"form\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n      <input type=\"date\" id=\"tt\" data-wob_ref=\"5\" data-wob_eps=\"e0\">\n      <button id=\"subbtn\" class=\"secondary-action\" data-wob_ref=\"6\" data-wob_eps=\"e0\">Submit</button>\n    </div>\n  </div>\n</div>",
@@ -1543,6 +1583,38 @@
     "demo": [
       {
         "task": "Enter the password E5B into both text fields and press submit, Select WyhK5, 9Ba, knlOUNT, rbFpeh7, PEFB2g, okBDxo, gFeBN, and then enter the username nathalie and the password 5Br into the text fields and press login.",
+        "trajectory": [
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Enter the password \"<span class=\"bold\">E5B</span>\" into both text fields and press submit.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n    <div id=\"form\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n      <p data-wob_ref=\"5\" data-wob_eps=\"e0\"><label data-wob_ref=\"6\" data-wob_eps=\"e0\">Password</label><input type=\"password\" id=\"password\" data-wob_ref=\"7\" data-wob_eps=\"e0\"></p>\n      <p data-wob_ref=\"8\" data-wob_eps=\"e0\"><label data-wob_ref=\"9\" data-wob_eps=\"e0\">Verify password</label><input type=\"password\" id=\"verify\" data-wob_ref=\"10\" data-wob_eps=\"e0\"></p>\n      <button id=\"subbtn\" class=\"secondary-action\" data-wob_ref=\"11\" data-wob_eps=\"e0\">Submit</button>\n    </div>\n  </div>\n</div>",
+            "act": "agent.click_xpath(\"//*[@id='password']\")\nagent.type('E5B')\nagent.click_xpath(\"//*[@id='verify']\")\nagent.type('E5B')\nagent.click_xpath(\"//*[@id='subbtn']\")"
+          },
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Select WyhK5, 9Ba, knlOUNT, rbFpeh7, PEFB2g, okBDxo, gFeBN and click Submit.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n    <div id=\"boxes-left\" data-wob_ref=\"4\" data-wob_eps=\"e0\"><label data-wob_ref=\"5\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch0\" data-wob_ref=\"6\" data-wob_eps=\"e0\">BreZpDT</label><br><label data-wob_ref=\"7\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch1\" data-wob_ref=\"8\" data-wob_eps=\"e0\">rbFpeh7</label><br><label data-wob_ref=\"9\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch2\" data-wob_ref=\"10\" data-wob_eps=\"e0\">3hYpws</label><br><label data-wob_ref=\"11\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch3\" data-wob_ref=\"12\" data-wob_eps=\"e0\">gFeBN</label><br><label data-wob_ref=\"13\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch4\" data-wob_ref=\"14\" data-wob_eps=\"e0\">WyhK5</label><br></div>\n    <div id=\"boxes-right\" data-wob_ref=\"15\" data-wob_eps=\"e0\"><label data-wob_ref=\"16\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch5\" data-wob_ref=\"17\" data-wob_eps=\"e0\">PEFB2g</label><br><label data-wob_ref=\"18\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch6\" data-wob_ref=\"19\" data-wob_eps=\"e0\">knlOUNT</label><br><label data-wob_ref=\"20\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch7\" data-wob_ref=\"21\" data-wob_eps=\"e0\">okBDxo</label><br><label data-wob_ref=\"22\" data-wob_eps=\"e0\"><input type=\"checkbox\" id=\"ch8\" data-wob_ref=\"23\" data-wob_eps=\"e0\">9Ba</label><br></div>\n    <br>\n    <button id=\"subbtn\" class=\"secondary-action\" data-wob_ref=\"24\" data-wob_eps=\"e0\">Submit</button>\n  </div>\n</div>",
+            "act": "agent.click_xpath(\"//label[text() = 'WyhK5']/input\")\nagent.click_xpath(\"//label[text() = '9Ba']/input\")\nagent.click_xpath(\"//label[text() = 'knlOUNT']/input\")\nagent.click_xpath(\"//label[text() = 'rbFpeh7']/input\")\nagent.click_xpath(\"//label[text() = 'PEFB2g']/input\")\nagent.click_xpath(\"//label[text() = 'okBDxo']/input\")\nagent.click_xpath(\"//label[text() = 'gFeBN']/input\")\nagent.click_xpath(\"//*[@id='subbtn']\")"
+          },
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Enter the <span class=\"bold\">username</span> \"nathalie\" and the <span class=\"bold\">password</span> \"5Br\" into the text fields and press login.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n    <div id=\"form\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n      <p data-wob_ref=\"5\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"6\" data-wob_eps=\"e0\">Username</label><input type=\"text\" id=\"username\" data-wob_ref=\"7\" data-wob_eps=\"e0\"></p>\n      <p data-wob_ref=\"8\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"9\" data-wob_eps=\"e0\">Password</label><input type=\"password\" id=\"password\" data-wob_ref=\"10\" data-wob_eps=\"e0\"></p>\n      <button id=\"subbtn\" class=\"secondary-action\" data-wob_ref=\"11\" data-wob_eps=\"e0\">OK</button>\n    </div>\n  </div>\n</div>",
+            "obs": "Username<input>\nPassword<input>",
+            "act": "agent.click_xpath(\"//*[@id='username']\")"
+          },
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Enter the <span class=\"bold\">username</span> \"nathalie\" and the <span class=\"bold\">password</span> \"5Br\" into the text fields and press login.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\" data-tampered=\"e0\">\n    <div id=\"form\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n      <p data-wob_ref=\"5\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"6\" data-wob_eps=\"e0\">Username</label><input type=\"text\" id=\"username\" data-wob_ref=\"7\" data-wob_eps=\"e0\" disabled=\"disabled\"></p>\n      <p data-wob_ref=\"8\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"9\" data-wob_eps=\"e0\">Password</label><input type=\"password\" id=\"password\" data-wob_ref=\"10\" data-wob_eps=\"e0\" disabled=\"disabled\"></p>\n      <button id=\"subbtn\" class=\"secondary-action\" data-wob_ref=\"11\" data-wob_eps=\"e0\" disabled=\"disabled\">OK</button>\n    </div>\n  <div id=\"popup\" data-wob_ref=\"12\" data-wob_eps=\"e0\">\n        <p data-wob_ref=\"13\" data-wob_eps=\"e0\">Your session is about to time out.</p>\n        <p data-wob_ref=\"14\" data-wob_eps=\"e0\">Exit to home page?</p>\n        <p data-wob_ref=\"15\" data-wob_eps=\"e0\"><button id=\"popup-ok\" data-wob_ref=\"16\" data-wob_eps=\"e0\">OK</button> <button id=\"popup-cancel\" data-wob_ref=\"17\" data-wob_eps=\"e0\">Cancel</button></p></div></div>\n</div>",
+            "obs": "Your session is about to time out.\nExit to home page?",
+            "act": "agent.click_xpath(\"//*[@id='popup-cancel']\")\nagent.click_xpath(\"//*[@id='username']\")\nagent.type('nathalie')\nagent.click_xpath(\"//*[@id='password']\")"
+          },
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Enter the <span class=\"bold\">username</span> \"nathalie\" and the <span class=\"bold\">password</span> \"5Br\" into the text fields and press login.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\" data-tampered=\"e0\">\n    <div id=\"form\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n      <p data-wob_ref=\"5\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"6\" data-wob_eps=\"e0\">Username</label><input type=\"text\" id=\"username\" data-wob_ref=\"7\" data-wob_eps=\"e0\" data-tampered=\"e0\"></p>\n      <p data-wob_ref=\"8\" data-wob_eps=\"e0\"><label class=\"bold\" data-wob_ref=\"9\" data-wob_eps=\"e0\">Password</label><input type=\"password\" id=\"password\" data-wob_ref=\"10\" data-wob_eps=\"e0\" data-tampered=\"e0\"></p>\n      <button id=\"subbtn\" class=\"secondary-action\" data-wob_ref=\"11\" data-wob_eps=\"e0\">OK</button>\n    </div>\n  </div>\n</div>",
+            "obs": "Username<input>\nPassword<input>",
+            "act": "agent.type('5Br')\nagent.click_xpath(\"//*[@id='subbtn']\")"
+          }
+        ]
+      }
+    ]
+  },
+  "enter-password_click-checkboxes_login-user-popup-reverse": {
+    "demo": [
+      {
+        "task": "Select WyhK5, 9Ba, knlOUNT, rbFpeh7, PEFB2g, okBDxo, gFeBN, and then enter the username nathalie and the password 5Br into the text fields and press login, after entering the password E5B into both text fields and press submit.",
         "trajectory": [
           {
             "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Enter the password \"<span class=\"bold\">E5B</span>\" into both text fields and press submit.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n    <div id=\"form\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n      <p data-wob_ref=\"5\" data-wob_eps=\"e0\"><label data-wob_ref=\"6\" data-wob_eps=\"e0\">Password</label><input type=\"password\" id=\"password\" data-wob_ref=\"7\" data-wob_eps=\"e0\"></p>\n      <p data-wob_ref=\"8\" data-wob_eps=\"e0\"><label data-wob_ref=\"9\" data-wob_eps=\"e0\">Verify password</label><input type=\"password\" id=\"verify\" data-wob_ref=\"10\" data-wob_eps=\"e0\"></p>\n      <button id=\"subbtn\" class=\"secondary-action\" data-wob_ref=\"11\" data-wob_eps=\"e0\">Submit</button>\n    </div>\n  </div>\n</div>",
