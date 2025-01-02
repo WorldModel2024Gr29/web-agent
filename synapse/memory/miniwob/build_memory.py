@@ -79,6 +79,8 @@ EXEMPLAR_LIST = [
     "use-autocomplete_click-dialog-reverse",
     "click-button-sequence_use-autocomplete",
     "click-button-sequence_use-autocomplete-reverse",
+    "click-checkboxes-soft_multi-layouts",
+    "click-checkboxes-soft_multi-layouts-reverse",
 ]
 
 
