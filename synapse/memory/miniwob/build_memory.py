@@ -81,6 +81,8 @@ EXEMPLAR_LIST = [
     "click-button-sequence_use-autocomplete-reverse",
     "click-checkboxes-soft_multi-layouts",
     "click-checkboxes-soft_multi-layouts-reverse",
+    "click-dialog-2_click-widget",
+    "click-dialog-2_click-widget-reverse",
 ]
 
 
