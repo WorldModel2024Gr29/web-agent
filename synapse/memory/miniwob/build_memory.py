@@ -85,6 +85,8 @@ EXEMPLAR_LIST = [
     "click-dialog-2_click-widget-reverse",
     "click-dialog-2_login-user-popup",
     "click-dialog-2_login-user-popup-reverse",
+    "click-dialog_search-engine",
+    "click-dialog_search-engine-reverse",
 ]
 
 
