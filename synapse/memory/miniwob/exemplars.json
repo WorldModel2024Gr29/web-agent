@@ -1892,5 +1892,39 @@
         ]
       }
     ]
+  },
+  "click-link_enter-text": {
+    "demo": [
+      {
+        "task": "Click on the link nulla, and then enter reZpD into the text field and press Submit.",
+        "trajectory": [
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Click on the link \"nulla\".</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">Suspendisse neque,. Sagittis vitae ut vitae proin. Fermentum pulvinar convallis imperdiet. Dolor. <span class=\"alink\" data-wob_ref=\"4\" data-wob_eps=\"e0\">Tempus</span> nisl. Rutrum diam aliquam <span class=\"alink\" data-wob_ref=\"5\" data-wob_eps=\"e0\">nulla</span> sit porta.</div>\n</div>",
+            "act": "agent.click_xpath(\"//*[@class='alink' and text()='nulla']\")"
+          },
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Enter \"<span class=\"bold\">reZpD</span>\" into the text field and press Submit.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n    <div id=\"form\" style=\"margin-left:7px;margin-top:9px;\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n      <input type=\"text\" id=\"tt\" data-wob_ref=\"5\" data-wob_eps=\"e0\">\n      <button id=\"subbtn\" class=\"secondary-action\" style=\"margin-top:18px;\" data-wob_ref=\"6\" data-wob_eps=\"e0\">Submit</button>\n    </div>\n  </div>\n</div>",
+            "act": "agent.click_xpath(\"//*[@id='tt']\")\nagent.type('reZpD')\nagent.click_xpath(\"//*[@id='subbtn']\")"
+          }
+        ]
+      }
+    ]
+  },
+  "click-link_enter-text-reverse": {
+    "demo": [
+      {
+        "task": "Enter reZpD into the text field and press Submit, after clicking on the link nulla.",
+        "trajectory": [
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Click on the link \"nulla\".</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">Suspendisse neque,. Sagittis vitae ut vitae proin. Fermentum pulvinar convallis imperdiet. Dolor. <span class=\"alink\" data-wob_ref=\"4\" data-wob_eps=\"e0\">Tempus</span> nisl. Rutrum diam aliquam <span class=\"alink\" data-wob_ref=\"5\" data-wob_eps=\"e0\">nulla</span> sit porta.</div>\n</div>",
+            "act": "agent.click_xpath(\"//*[@class='alink' and text()='nulla']\")"
+          },
+          {
+            "state": "<div id=\"wrap\" data-wob_ref=\"2\" data-wob_eps=\"e0\">\n  <div id=\"query\">Enter \"<span class=\"bold\">reZpD</span>\" into the text field and press Submit.</div>\n  <div id=\"area\" data-wob_ref=\"3\" data-wob_eps=\"e0\">\n    <div id=\"form\" style=\"margin-left:7px;margin-top:9px;\" data-wob_ref=\"4\" data-wob_eps=\"e0\">\n      <input type=\"text\" id=\"tt\" data-wob_ref=\"5\" data-wob_eps=\"e0\">\n      <button id=\"subbtn\" class=\"secondary-action\" style=\"margin-top:18px;\" data-wob_ref=\"6\" data-wob_eps=\"e0\">Submit</button>\n    </div>\n  </div>\n</div>",
+            "act": "agent.click_xpath(\"//*[@id='tt']\")\nagent.type('reZpD')\nagent.click_xpath(\"//*[@id='subbtn']\")"
+          }
+        ]
+      }
+    ]
   }
 }
