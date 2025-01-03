@@ -27,3 +27,4 @@ synapse/memory/*/*.faiss
 synapse/memory/*/*.pkl
 .venv_synapse
 .python-version
+.env
