@@ -25,5 +25,5 @@
 !synapse/memory/**
 synapse/memory/*/*.faiss
 synapse/memory/*/*.pkl
-.venv_snapse
+.venv_synapse
 .python-version
