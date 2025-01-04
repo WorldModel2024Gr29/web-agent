@@ -5,6 +5,9 @@ import os
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
 from collections import Counter
+from dotenv import load_dotenv
+
+load_dotenv()
 
 logger = logging.getLogger(__name__)
 
@@ -74,7 +77,7 @@ def build_memory(memory_path: str):
 
     # embed memory_keys into VectorDB
     logger.info("Initilizing memory")
-    openai.api_key = os.environ["OPENAI_API_KEY"]
+    openai.api_key = os.getenv("OPENAI_API_KEY")
     embedding = OpenAIEmbeddings(model="text-embedding-ada-002")
     metadatas = [{"name": name} for name in exemplar_names]
     memory = FAISS.from_texts(
