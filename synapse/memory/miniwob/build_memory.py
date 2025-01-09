@@ -2,8 +2,8 @@ import logging
 import json
 import openai
 import os
-from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.vectorstores import FAISS
+from langchain_openai import OpenAIEmbeddings
+from langchain_community.vectorstores import FAISS
 from collections import Counter
 from dotenv import load_dotenv
 
