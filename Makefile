@@ -11,3 +11,10 @@ run-gpt-4:
 		--model gpt-4-0613 \
 		--seed 0 \
 		--num_episodes 1
+
+run-gpt-4-32k:
+	python run_miniwob.py \
+		--env_name click-button \
+		--model gpt-4-32k-0613 \
+		--seed 0 \
+		--num_episodes 1
