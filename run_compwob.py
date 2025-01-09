@@ -215,6 +215,7 @@ def save_results_to_csv(args, compwob_results):
 def main():
     SEEDS_START = 0
     SEEDS_COUNT = 1
+    compwob_results = None
     args = {
         "model": "gpt-3.5-turbo-1106",
         "seeds": [seed for seed in range(SEEDS_START, SEEDS_START + SEEDS_COUNT)],

@@ -2,8 +2,8 @@ import logging
 import json
 import openai
 import os
-from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.vectorstores import FAISS
+from langchain_openai import OpenAIEmbeddings
+from langchain_community.vectorstores import FAISS
 from collections import Counter
 
 logger = logging.getLogger(__name__)
@@ -154,6 +154,6 @@ def retrieve_exemplar_name(memory, query: str, top_k) -> str:
 
 def load_memory(memory_path):
     embedding = OpenAIEmbeddings(model="text-embedding-ada-002")
-    memory = FAISS.load_local(memory_path, embedding)
+    memory = FAISS.load_local(memory_path, embedding, allow_dangerous_deserialization=True)
 
     return memory
