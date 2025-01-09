@@ -101,6 +101,6 @@ def retrieve_exemplar_name(memory, query: str, top_k) -> str:
 
 def load_memory(memory_path):
     embedding = OpenAIEmbeddings(model="text-embedding-ada-002")
-    memory = FAISS.load_local(memory_path, embedding)
+    memory = FAISS.load_local(memory_path, embedding, allow_dangerous_deserialization=True)
 
     return memory
