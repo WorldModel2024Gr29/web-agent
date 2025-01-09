@@ -218,6 +218,7 @@ def main():
     compwob_results = None
     args = {
         "model": "gpt-3.5-turbo-1106",
+        # "model": "gpt-4o-2024-11-20",
         "seeds": [seed for seed in range(SEEDS_START, SEEDS_START + SEEDS_COUNT)],
         "num_episodes": "1",
         # "headress": True,
