@@ -23,7 +23,7 @@ logging.getLogger("urllib3").setLevel(logging.ERROR)
 
 
 # 単体動作用
-# COMPWOB_TASKS = [
+COMPWOB_TASKS = [
     ## miniwob
     # "login-user-popup",
     # "use-autocomplete",
@@ -39,8 +39,8 @@ logging.getLogger("urllib3").setLevel(logging.ERROR)
     ## compwob
     # "click-option_enter-text",
     # "click-button_enter-text",
-    # "use-autocomplete_click-dialog",
-    # "use-autocomplete_click-dialog-reverse",
+    "use-autocomplete_click-dialog",
+    "use-autocomplete_click-dialog-reverse",
     # "click-button-sequence_use-autocomplete",
 
     # "click-button_click-dialog",
@@ -83,7 +83,7 @@ logging.getLogger("urllib3").setLevel(logging.ERROR)
     # "multi-layouts_login-user-reverse",
     # "use-autocomplete_click-dialog",
     # "use-autocomplete_click-dialog-revers",
-# ]
+]
 
 error_tasks = [
     "click-button_enter-text",
