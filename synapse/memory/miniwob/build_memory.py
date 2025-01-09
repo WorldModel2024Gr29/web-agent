@@ -90,7 +90,7 @@ def build_memory(memory_path: str):
 
 def retrieve_exemplar_name(memory, query: str, top_k) -> str:
     retriever = memory.as_retriever(search_kwargs={"k": top_k})
-    docs = retriever.get_relevant_documents(query)
+    docs = retriever.invoke(query)
     retrieved_exemplar_names = [doc.metadata["name"] for doc in docs]
     logger.info(f"Retrieved exemplars: {retrieved_exemplar_names}")
     data = Counter(retrieved_exemplar_names)
