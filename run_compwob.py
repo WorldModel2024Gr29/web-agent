@@ -130,10 +130,13 @@ def run_all_compwob_tasks(args):
             with timer(f"{env_name} - seed:{seed}"):
                 print(f"\n{'=' * 100}\n[{no}/{total_no}] Task: {env_name}")
                 no += 1
-                succeed = run(env_name, args, seed)
-                cprint(f"succeed: {succeed}", "green" if succeed else "red")
-                task_succeed_sum += succeed
-
+                try:
+                    succeed = run(env_name, args, seed)
+                    cprint(f"succeed: {succeed}", "green" if succeed else "red")
+                    task_succeed_sum += succeed
+                except Exception as e:
+                    print(f"error during task execution: {e}")
+                    return results
         results[env_name] = round(task_succeed_sum / len(seeds), 3)
 
     return results
@@ -222,13 +225,8 @@ def main():
         # "headress": True,
         "headress": False,
     }
-    try:
-        compwob_results = run_all_compwob_tasks(args)
-    except Exception as e:
-        print(f"error during task execution: {e}")
-    finally:
-        # 結果を保存
-        save_results_to_csv(args, compwob_results if compwob_results else {})
+    compwob_results = run_all_compwob_tasks(args)
+    save_results_to_csv(args, compwob_results if compwob_results else {})
 
 
 if __name__ == "__main__":
