@@ -96,7 +96,7 @@ def main():
                 if agent.done:
                     debug_cprint(f" agent.done", "white")
                     break
-            succeed = agent.log_results()
+            # succeed = agent.log_results()
 
         agent.close()
         debug_cprint(f"succeed: {succeed}\n", "white")
