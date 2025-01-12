@@ -23,7 +23,7 @@ logging.getLogger("urllib3").setLevel(logging.ERROR)
 
 
 # 単体動作用
-# COMPWOB_TASKS = [
+COMPWOB_TASKS = [
     ## miniwob
     # "login-user-popup",
     # "use-autocomplete",
@@ -59,7 +59,7 @@ logging.getLogger("urllib3").setLevel(logging.ERROR)
     # "login-user_navigate-tree-transition-reverse",
     # "multi-layouts_login-user",
     # "multi-layouts_login-user-reverse",
-    # "enter-password_click-checkboxes_login-user-popup",
+    "enter-password_click-checkboxes_login-user-popup",
     # "click-checkboxes-transfer_enter-password_click-dialog"
 
     # 低成功率
@@ -83,7 +83,7 @@ logging.getLogger("urllib3").setLevel(logging.ERROR)
     # "multi-layouts_login-user-reverse",
     # "use-autocomplete_click-dialog",
     # "use-autocomplete_click-dialog-revers",
-# ]
+]
 
 error_tasks = [
     "click-button_enter-text",
@@ -217,7 +217,7 @@ def save_results_to_csv(args, compwob_results):
 
 def main():
     SEEDS_START = 0
-    SEEDS_COUNT = 5
+    SEEDS_COUNT = 1
     compwob_results = None
     args = {
         # "model": "gpt-3.5-turbo-1106",
