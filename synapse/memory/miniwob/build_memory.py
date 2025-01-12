@@ -140,7 +140,7 @@ def retrieve_exemplar_name(memory, query: str, top_k) -> str:
     debug_cprint(f"memory retrieve_exemplar_name()", "white")
     retriever = memory.as_retriever(search_kwargs={"k": top_k})
     debug_cprint(f" retriever: {retriever}", "white")
-    docs = retriever.get_relevant_documents(query)
+    docs = retriever.invoke(query)
     debug_cprint(f" docs: {docs}", "white")
     retrieved_exemplar_names = [doc.metadata["name"] for doc in docs]
     debug_cprint(f" retrieved_exemplar_names: {retrieved_exemplar_names}", "white")
