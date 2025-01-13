@@ -27,3 +27,4 @@ synapse/memory/*/*.faiss
 synapse/memory/*/*.pkl
 
 __pycache__/
+.DS_Store
