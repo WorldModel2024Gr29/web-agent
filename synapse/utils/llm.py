@@ -12,6 +12,8 @@ from openai import (
     RateLimitError,
 )
 
+from debug import debug_cprint
+
 # .envを環境変数に登録
 from dotenv import load_dotenv
 load_dotenv()
@@ -108,8 +110,10 @@ def generate_response(
     logger.info(
         f"Send a request to the language model from {inspect.stack()[1].function}"
     )
+    debug_cprint(f"\ngenerate_response()", "green")
 
     if get_mode(model) == "chat":
+        debug_cprint(f" chat", "green")
         response = client.chat.completions.create(
             model=model,
             messages=messages,
@@ -118,6 +122,7 @@ def generate_response(
         )
         message = response.choices[0].message.content
     else:
+        debug_cprint(f" not chat", "green")
         prompt = "\n\n".join(m["content"] for m in messages) + "\n\n"
         response = openai.Completion.create(
             prompt=prompt,
@@ -132,6 +137,8 @@ def generate_response(
         "total_tokens": response.usage.total_tokens,
     }
 
+    debug_cprint(f" message:[\n{message}\n]", "green")
+    debug_cprint(f" info:[\n{info}\n]\n", "green")
     return message, info
 
 

@@ -7,6 +7,15 @@ run_compwob:
 	python run_compwob.py
 
 
+.PHONY: use-autocomplete
+use-autocomplete:
+	python run_miniwob.py \
+		--env_name use-autocomplete \
+		--model gpt-3.5-turbo-1106 \
+		--seed 0 \
+		--num_episodes $(NUM_EPISODES)
+
+
 .PHONY: click
 click:
 	python run_miniwob.py \

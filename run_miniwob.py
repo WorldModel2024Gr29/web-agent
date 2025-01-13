@@ -58,11 +58,13 @@ def main():
         args.log_dir = os.path.join(current_path, log_dir)
 
         agent = Agent(args=args)
+        # if any(keyword in args.env_name for keyword in ["book-flight", "terminal", "use-autocomplete"]):
         if args.env_name in ["book-flight", "terminal", "use-autocomplete"]:
             max_steps = 2
+        # elif any(keyword in args.env_name for keyword in ["login-user", "login-user-popup"]):
         elif args.env_name in ["login-user", "login-user-popup"]:
-        # elif args.env_name in ["login-user", "login-user-popup", "click-option_enter-text"]:
             max_steps = 3
+        # elif any(keyword in args.env_name for keyword in ["guess-number", "tic-tac-toe"]):
         elif args.env_name in ["guess-number", "tic-tac-toe"]:
             max_steps = 10
         else:
@@ -82,6 +84,7 @@ def main():
 
                 # action
                 actions = agent.act(obs)
+                # actions = agent.rci_act(obs)
                 debug_cprint(f" actions: [{actions}]", "white")
                 if actions is None:
                     break
@@ -96,7 +99,7 @@ def main():
             succeed = agent.log_results()
 
         agent.close()
-        debug_cprint(f"\n", "white")
+        debug_cprint(f"succeed: {succeed}\n", "white")
         return succeed
 
     except Exception as e:
@@ -113,7 +116,8 @@ def main():
         print(f"\nagent.close()")
         agent.close()
 
-        sys.exit(1)
+        # sys.exit(1)
+        raise
 
 
 if __name__ == "__main__":

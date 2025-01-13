@@ -19,6 +19,8 @@ from synapse.envs.miniwob.state import MiniWoBState
 from synapse.envs.miniwob.reward import get_original_reward
 from synapse.envs.miniwob.screenshot import get_screenshot
 
+from debug import debug_cprint
+
 
 class MiniWoBInstance(Thread):
     """Interface between Python and Chrome driver via Selenium.
@@ -75,6 +77,8 @@ class MiniWoBInstance(Thread):
                 *** Must specify `seeds` at each reset call.
             initial_mode (str): Initial data mode (e.g., "train", "test")
         """
+        debug_cprint(f"\nMiniWoBInstance.__init__() start", "cyan")
+
         super(MiniWoBInstance, self).__init__()
         # Overrides Thread.daemon: Kill this thread when the parent is killed
         self.daemon = True
@@ -120,9 +124,11 @@ class MiniWoBInstance(Thread):
         if not threading:
             # Hack: override the start method of Thread
             self.start = self.create_driver
+        debug_cprint(f"instance.__init__() finish\n", "cyan")
 
     def run(self):
         """Overrides `Thread.run`"""
+        debug_cprint(f"\ninstance.run() start", "cyan")
         try:
             self.create_driver()
             # Wait for command
@@ -137,34 +143,49 @@ class MiniWoBInstance(Thread):
                 self.task_queue.task_done()
                 if func == self.close:
                     break
+            debug_cprint(f"instance.run() finish\n", "cyan")
+
         finally:
             self.close()
             logging.info("Closed instance %d", self.index)
 
     def call(self, func, *args):
+        debug_cprint(f"\ninstance.call() start", "cyan")
         if self.threading:
+            debug_cprint(f" threading is True", "cyan")
             self.task_queue.put((func, args))
         else:
+            debug_cprint(f" threading is False", "cyan")
             func(*args)
+        debug_cprint(f"instance.call() finish\n", "cyan")
 
     def wait(self):
+        debug_cprint(f"\ninstance.wait() start", "cyan")
         if self.threading:
+            debug_cprint(f" threading is True", "cyan")
             self.task_queue.join()
+        debug_cprint(f"instance.wait() finish\n", "cyan")
 
     ################################
     # Possible Functions
 
     def create_driver(self):
         """Create a driver"""
+        debug_cprint(f"\ninstance.create_driver() start", "light_green")
+
+        debug_cprint(f" 1", "light_green")
         assert not hasattr(self, "driver"), "Instance {} already has a driver".format(
             self.index
         )
+        debug_cprint(f" 2", "light_green")
         options = webdriver.ChromeOptions()
         if self.headless:
+            debug_cprint(f" 3", "light_green")
             options.add_argument("headless")
             options.add_argument("disable-gpu")
             options.add_argument("no-sandbox")
         else:
+            debug_cprint(f" 4 url: {self.url}", "light_green")
             options.add_argument("app=" + self.url)
             options.add_argument(
                 f"window-size={self.window_width},{self.window_height}"
@@ -175,7 +196,9 @@ class MiniWoBInstance(Thread):
             #         9000, 30 + self.index * (self.window_height + 30)
             #     )
             # )
+        debug_cprint(f" 5", "light_green")
         self.driver = webdriver.Chrome(options=options)
+        debug_cprint(f" 6", "light_green")
         self.driver.implicitly_wait(5)
 
         """
@@ -189,17 +212,23 @@ class MiniWoBInstance(Thread):
         self.driver.set_window_size(required_width, required_height)
         """
 
+        debug_cprint(f" 7", "light_green")
         if self.headless:
+            debug_cprint(f" 8", "light_green")
             self.driver.get(self.url)
         try:
+            debug_cprint(f" 9", "light_green")
             WebDriverWait(self.driver, 5).until(
                 EC.element_to_be_clickable((By.ID, self.SYNC_SCREEN_ID))
             )
         except TimeoutException as e:
+            debug_cprint(f" TimeoutException @ create_driver: {e}", "cyan")
             logging.error("Page did not load properly. Wrong MINIWOB_BASE_URL?")
             raise e
         # Seed the seed
+        debug_cprint(f" 10", "light_green")
         self.driver.execute_script("Math.seedrandom({});".format(self.init_seed))
+        debug_cprint(f"instance.create_driver() finish\n", "light_green")
 
     def close(self):
         """Tear down the WebDriver."""
@@ -221,16 +250,26 @@ class MiniWoBInstance(Thread):
             states (list)
             seed (object): Seed to set for the next episode
         """
+        debug_cprint(f"\ninstance.reset() start", "cyan")
+        debug_cprint(f" reset 1", "cyan")
         if self.refresh_freq:
+            debug_cprint(f" reset 2", "cyan")
             assert (
                 seed is not None
             ), "reset() must specify seed if refresh_freq is specified"
+        debug_cprint(f" reset 3", "cyan")
         i = self.index
+        debug_cprint(f" reset 4", "cyan")
         self.force_stop()
+        debug_cprint(f" reset 5", "cyan")
         self.begin_task(seed=seed)
+        debug_cprint(f" reset 6", "cyan")
         states[i] = self.get_state()
+        debug_cprint(f" reset 7", "cyan")
         if self.cache_state:
+            debug_cprint(f" reset 8", "cyan")
             self.initial_state = states[i]
+        debug_cprint(f"instance.reset() finish\n", "cyan")
 
     def step(self, action, states, rewards, dones, info_n):
         """Applies an action on this instance.
@@ -275,6 +314,7 @@ class MiniWoBInstance(Thread):
         self.driver.execute_script("return core.endEpisode(0);")
 
     def begin_task(self, seed=None):
+        debug_cprint(f"\nbegin_task() start", "light_green")
         """Start the task. Only available when done is True.
         The sync screen will disappear and the countdown timer will start.
 
@@ -304,6 +344,7 @@ class MiniWoBInstance(Thread):
         elif self.wait_ms:
             time.sleep(self.wait_ms / 1000.0)
         self.start_time = time.time()
+        debug_cprint(f"begin_task() finish\n", "light_green")
 
     def perform(self, action):
         """Perform an action.
