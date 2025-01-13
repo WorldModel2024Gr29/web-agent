@@ -1,3 +1,25 @@
+# Overview
+Working to improve Synapse's `CompWoB` performance as a theme for the World Model Course.
+
+# How To Use
+The results in csv format are output to `results/compwob` when `run_compwob.py` is executed.
+```shell
+# build memory
+make memory
+ # or 
+python build_memory.py --env miniwob
+
+# run compwob
+run_compwob
+ # or
+python run_compwob.py
+```
+<br>
+
+The original Synapse readme is below.
+
+<hr>
+
 <p align="center">
   <a href="https://ltzheng.github.io/Synapse/">
     <img src="assets/logo.png" width="50%" />
