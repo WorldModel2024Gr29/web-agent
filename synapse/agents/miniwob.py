@@ -539,6 +539,8 @@ To accomplish the task, use methods in the following Agent class to generate act
         else:
             # debug_cprint(f" fail", "red")
             new_file_path = self.log_path.with_name(f"{filename}_fail.json")
+        if os.path.exists(new_file_path):
+            os.remove(new_file_path)
         os.rename(self.log_path, new_file_path)
         return succeed
 

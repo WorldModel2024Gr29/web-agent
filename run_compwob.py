@@ -23,7 +23,7 @@ logging.getLogger("urllib3").setLevel(logging.ERROR)
 
 
 # 単体動作用
-# COMPWOB_TASKS = [
+COMPWOB_TASKS = [
     ## miniwob
     # "login-user-popup",
     # "use-autocomplete",
@@ -59,7 +59,7 @@ logging.getLogger("urllib3").setLevel(logging.ERROR)
     # "login-user_navigate-tree-transition-reverse",
     # "multi-layouts_login-user",
     # "multi-layouts_login-user-reverse",
-    # "enter-password_click-checkboxes_login-user-popup",
+    "enter-password_click-checkboxes_login-user-popup",
     # "click-checkboxes-transfer_enter-password_click-dialog"
 
     # 低成功率
@@ -83,7 +83,7 @@ logging.getLogger("urllib3").setLevel(logging.ERROR)
     # "multi-layouts_login-user-reverse",
     # "use-autocomplete_click-dialog",
     # "use-autocomplete_click-dialog-revers",
-# ]
+]
 
 error_tasks = [
     "click-button_enter-text",
@@ -121,20 +121,23 @@ def run(env_name: str, args: dict[str, str], seed: int):
 def run_all_compwob_tasks(args):
     results = {}
     seeds = args["seeds"]
-
     no = 1
     total_no = len(COMPWOB_TASKS) * len(seeds)
     for env_name in COMPWOB_TASKS:
         task_succeed_sum = 0
         for seed in seeds:
-            with timer(f"{env_name} - seed:{seed}"):
-                print(f"\n{'=' * 100}\n[{no}/{total_no}] Task: {env_name}")
-                no += 1
-                succeed = run(env_name, args, seed)
-                cprint(f"succeed: {succeed}", "green" if succeed else "red")
-                task_succeed_sum += succeed
+            try:                
+                with timer(f"{env_name} - seed:{seed}"):
+                    print(f"\n{'=' * 100}\n[{no}/{total_no}] Task: {env_name}")
+                    no += 1
+                    succeed = run(env_name, args, seed)
+                    cprint(f"succeed: {succeed}", "green" if succeed else "red")
+                    task_succeed_sum += succeed
+            except Exception as e:
+                cprint(f"Error: {e}", "red")
+                return results
 
-        results[env_name] = round(task_succeed_sum / len(seeds), 3)
+        results[env_name] = round(task_succeed_sum / len(seeds), 3)    
 
     return results
 
@@ -217,19 +220,16 @@ def main():
     SEEDS_COUNT = 1
     compwob_results = None
     args = {
-        "model": "gpt-3.5-turbo-1106",
+        # "model": "gpt-3.5-turbo-1106",
+        # "model": "gpt-4-0613",
+        "model": "gpt-4o-2024-11-20",
         "seeds": [seed for seed in range(SEEDS_START, SEEDS_START + SEEDS_COUNT)],
         "num_episodes": "1",
         # "headress": True,
         "headress": False,
     }
-    try:
-        compwob_results = run_all_compwob_tasks(args)
-    except Exception as e:
-        print(f"error during task execution: {e}")
-    finally:
-        # 結果を保存
-        save_results_to_csv(args, compwob_results if compwob_results else {})
+    compwob_results = run_all_compwob_tasks(args)
+    save_results_to_csv(args, compwob_results if compwob_results else {})
 
 
 if __name__ == "__main__":
