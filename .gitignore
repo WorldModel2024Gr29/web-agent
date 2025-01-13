@@ -25,3 +25,5 @@
 !synapse/memory/**
 synapse/memory/*/*.faiss
 synapse/memory/*/*.pkl
+
+__pycache__/
