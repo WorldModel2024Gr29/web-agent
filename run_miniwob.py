@@ -1,8 +1,11 @@
+import sys
 import argparse
 import logging
 import os
 
 from synapse.agents.miniwob import Agent
+from debug import debug_cprint
+
 
 logger = logging.getLogger("synapse")
 logger.setLevel(logging.INFO)
@@ -26,37 +29,91 @@ def create_parser():
     return parser
 
 
+def is_wm_compwob_task(env_name: str):
+    from synapse.memory.wm_compwob.build_memory import EXEMPLAR_LIST
+    return env_name in EXEMPLAR_LIST
+
+
 def main():
-    parser = create_parser()
-    args = parser.parse_args()
-    current_path = os.getcwd()
-    args.memory_path = os.path.join(current_path, "synapse/memory/miniwob")
-    args.log_dir = os.path.join(current_path, "results/miniwob")
-    agent = Agent(args=args)
-    if args.env_name in ["book-flight", "terminal", "use-autocomplete"]:
-        max_steps = 2
-    elif args.env_name in ["login-user", "login-user-popup"]:
-        max_steps = 3
-    elif args.env_name in ["guess-number", "tic-tac-toe"]:
-        max_steps = 10
-    else:
-        max_steps = 1
-    for i in range(args.num_episodes):
-        agent.reset(seed=args.seed + i)
-        for _ in range(max_steps):
-            obs = agent.filter()
-            actions = agent.act(obs)
-            if actions is None:
-                break
-            try:
-                logger.info(f"Actions:\n{actions}")
-                exec(actions)
-            except:
-                logger.info(f"Failed to execute action. Try again.")
-            if agent.done:
-                break
-        agent.log_results()
-    agent.close()
+    try:
+        debug_cprint(f"\nmain()", "white")
+        parser = create_parser()
+        args = parser.parse_args()
+        debug_cprint(f" env-name: {args.env_name}", "white")
+
+        current_path = os.getcwd()
+        # if is_wm_compwob_task(args.env_name):
+        #     print(f"env is wm_compwob task")
+        #     memory_path = "synapse/memory/wm_compwob"
+        #     log_dir = "results/wm_compwob"
+        # else:
+        #     print(f"env is miniwob task")
+        #     memory_path = "synapse/memory/miniwob"
+        #     log_dir = "results/miniwob"
+
+        memory_path = "synapse/memory/miniwob"
+        log_dir = "results/miniwob"
+
+        args.memory_path = os.path.join(current_path, memory_path)
+        args.log_dir = os.path.join(current_path, log_dir)
+
+        agent = Agent(args=args)
+        if args.env_name in ["book-flight", "terminal", "use-autocomplete"]:
+            max_steps = 2
+        elif args.env_name in ["login-user", "login-user-popup"]:
+        # elif args.env_name in ["login-user", "login-user-popup", "click-option_enter-text"]:
+            max_steps = 3
+        elif args.env_name in ["guess-number", "tic-tac-toe"]:
+            max_steps = 10
+        else:
+            max_steps = 1
+
+        succeed = False
+        debug_cprint(f" max_steps: {max_steps}", "white")
+        for i in range(args.num_episodes):
+            debug_cprint(f" loop {i+1}/{max_steps}", "white")
+            # reset
+            agent.reset(seed=args.seed + i)
+
+            for _ in range(max_steps):
+                # filter
+                obs = agent.filter()
+                debug_cprint(f" obs: [{obs}]", "white")
+
+                # action
+                actions = agent.act(obs)
+                debug_cprint(f" actions: [{actions}]", "white")
+                if actions is None:
+                    break
+                try:
+                    logger.info(f"Actions:\n{actions}")
+                    exec(actions)
+                except:
+                    logger.info(f"Failed to execute action. Try again.")
+                if agent.done:
+                    debug_cprint(f" agent.done", "white")
+                    break
+            succeed = agent.log_results()
+
+        agent.close()
+        debug_cprint(f"\n", "white")
+        return succeed
+
+    except Exception as e:
+        print(f"Fatal error: {str(e)}")
+        print("Traceback:")
+        _tb = e.__traceback__
+        while _tb is not None:
+            _filename = _tb.tb_frame.f_code.co_filename
+            _line_number = _tb.tb_lineno
+            print(f"File '{_filename}', line {_line_number}")
+            _tb = _tb.tb_next
+        print(f"Error: {str(e)}")
+
+        print(f"\nagent.close()")
+        agent.close()
+
+        sys.exit(1)
 
 
 if __name__ == "__main__":

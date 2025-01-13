@@ -392,7 +392,8 @@ class Agent:
         filename = os.path.splitext(os.path.basename(self.log_path))[0]
         with open(self.log_path, "w") as f:
             json.dump(self.conversation, f, indent=2)
-        if self.reward > 0:
+        succeed = self.reward > 0
+        if succeed:
             new_file_path = self.log_path.with_name(f"{filename}_success.json")
         else:
             new_file_path = self.log_path.with_name(f"{filename}_fail.json")

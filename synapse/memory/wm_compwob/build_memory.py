@@ -14,54 +14,13 @@ load_dotenv()
 
 
 EXEMPLAR_LIST = [
-    "book-flight",
-    "choose-date",
-    "click-button-sequence",
-    "click-button",
-    "click-checkboxes-large",
-    "click-checkboxes-soft",
-    "click-collapsible-2",
-    "click-collapsible",
-    "click-color",
-    "click-dialog-2",
-    "click-dialog",
-    "click-link",
-    "click-menu",
-    "click-pie",
-    "click-scroll-list",
-    "click-shades",
-    "click-shape",
-    "click-tab-2",
-    "click-tab",
-    "click-widget",
-    "copy-paste-2",
-    "count-shape",
-    "email-inbox-nl-turk",
-    "enter-date",
-    "enter-password",
-    "enter-text-dynamic",
-    "enter-time",
-    "find-word",
-    "focus-text-2",
-    "focus-text",
-    "grid-coordinate",
-    "guess-number",
-    "identify-shape",
-    "login-user-popup",
-    "multi-layouts",
-    "navigate-tree",
-    "read-table",
-    "search-engine",
-    "simple-algebra",
-    "social-media-all",
-    "social-media-some",
-    "social-media",
-    "terminal",
-    "text-transform",
-    "tic-tac-toe",
-    "use-autocomplete",
-    "use-slider",
-    "use-spinner"
+    "click-option_enter-text",                      # compwob
+    "click-option_enter-text-reverse",              # compwob
+    "click-option_login-user",                      # compwob
+    "click-option_login-user-reverse",              # compwob
+    "click-option_login-user-transition",           # compwob
+    "click-option_login-user-transition-reverse",   # compwob
+    "click-button-test"  # add for testing
 ]
 
 
@@ -96,9 +55,6 @@ def build_memory(memory_path: str):
 
 
 def retrieve_exemplar_name(memory, query: str, top_k) -> str:
-    """
-    FAISSからqueryに近い要素をtop_k取得し、最頻値のnameを返す
-    """
     print(f"memory retrieve_exemplar_name()")
     retriever = memory.as_retriever(search_kwargs={"k": top_k})
     print(f" retriever: {retriever}")
