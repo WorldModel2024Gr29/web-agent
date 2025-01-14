@@ -12,6 +12,8 @@ from openai import (
     RateLimitError,
 )
 
+from debug import debug_cprint
+
 # .envを環境変数に登録
 from dotenv import load_dotenv
 load_dotenv()
@@ -38,6 +40,7 @@ def num_tokens_from_messages(messages, model):
         "gpt-4-32k-0314",
         "gpt-4-0613",
         "gpt-4-32k-0613",
+        "gpt-4o-2024-11-20"
     }:
         tokens_per_message = 3
         tokens_per_name = 1
@@ -66,6 +69,8 @@ MAX_TOKENS = {
     "gpt-3.5-turbo-0613": 4097,
     "gpt-3.5-turbo-16k-0613": 16385,
     "gpt-3.5-turbo-1106": 16385,
+    "gpt-4-0613": 8192,
+    "gpt-4o-2024-11-20": 16385,
 }
 
 
@@ -81,6 +86,7 @@ def get_mode(model: str) -> str:
         "gpt-4-32k-0314",
         "gpt-4-0613",
         "gpt-4-32k-0613",
+        "gpt-4o-2024-11-20",
     ]:
         return "chat"
     elif model in [
@@ -108,8 +114,10 @@ def generate_response(
     logger.info(
         f"Send a request to the language model from {inspect.stack()[1].function}"
     )
+    debug_cprint(f"\ngenerate_response()", "green")
 
     if get_mode(model) == "chat":
+        debug_cprint(f" chat", "green")
         response = client.chat.completions.create(
             model=model,
             messages=messages,
@@ -118,6 +126,7 @@ def generate_response(
         )
         message = response.choices[0].message.content
     else:
+        debug_cprint(f" not chat", "green")
         prompt = "\n\n".join(m["content"] for m in messages) + "\n\n"
         response = openai.Completion.create(
             prompt=prompt,
@@ -132,6 +141,8 @@ def generate_response(
         "total_tokens": response.usage.total_tokens,
     }
 
+    debug_cprint(f" message:[\n{message}\n]", "green")
+    debug_cprint(f" info:[\n{info}\n]\n", "green")
     return message, info
 
 

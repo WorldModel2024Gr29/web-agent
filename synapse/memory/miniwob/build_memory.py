@@ -2,11 +2,18 @@ import logging
 import json
 import openai
 import os
-from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.vectorstores import FAISS
+from langchain_openai import OpenAIEmbeddings
+from langchain_community.vectorstores import FAISS
 from collections import Counter
 
 logger = logging.getLogger(__name__)
+
+# .envを環境変数に登録
+from dotenv import load_dotenv
+load_dotenv()
+
+from debug import debug_cprint, enable_debug
+
 
 EXEMPLAR_LIST = [
     "book-flight",
@@ -57,10 +64,47 @@ EXEMPLAR_LIST = [
     "use-autocomplete",
     "use-slider",
     "use-spinner",
+
+    # CompWoB
+    "click-button_click-dialog",
+    "click-button_click-dialog-reverse",
+    "click-checkboxes-soft_enter-password",
+    "click-checkboxes-soft_enter-password-reverse",
+    "click-link_click-dialog",
+    "click-link_click-dialog-reverse",
+    "enter-date_login-user",
+    "enter-date_login-user-reverse",
+    "login-user_navigate-tree",
+    "login-user_navigate-tree-reverse",
+    "multi-layouts_login-user",
+    "multi-layouts_login-user-reverse",
+    "enter-password_click-checkboxes_login-user-popup",
+    "enter-password_click-checkboxes_login-user-popup-reverse",
+    "use-autocomplete_click-dialog",
+    "use-autocomplete_click-dialog-reverse",
+    "click-button-sequence_use-autocomplete",
+    "click-button-sequence_use-autocomplete-reverse",
+    "click-checkboxes-soft_multi-layouts",
+    "click-checkboxes-soft_multi-layouts-reverse",
+    "click-dialog-2_click-widget",
+    "click-dialog-2_click-widget-reverse",
+    "click-dialog-2_login-user-popup",
+    "click-dialog-2_login-user-popup-reverse",
+    "click-dialog_search-engine",
+    "click-dialog_search-engine-reverse",
+    "click-link_enter-text",
+    "click-link_enter-text-reverse",
+    "click-option_enter-text",
+    "click-option_enter-text-reverse",
+    "click-checkboxes-transfer_enter-password_click-dialog",
+    "click-checkboxes-transfer_enter-password_click-dialog-reverse",
 ]
 
 
 def build_memory(memory_path: str):
+    # enable_debug()
+
+    debug_cprint(f"memory_path: {memory_path}", "white")
     with open(os.path.join(memory_path, "specifiers.json"), "r") as rf:
         specifier_dict = json.load(rf)
         exemplar_names = []
@@ -70,6 +114,10 @@ def build_memory(memory_path: str):
             for query in v:
                 exemplar_names.append(k)
                 specifiers.append(query)
+    debug_cprint(f"len(list(set(exemplar_names))): {len(list(set(exemplar_names)))}", "white")
+    debug_cprint(f"len(EXEMPLAR_LIST): {len(EXEMPLAR_LIST)}", "white")
+    missing_elements = set(EXEMPLAR_LIST) - set(exemplar_names)
+    debug_cprint(f"missing: {missing_elements}", "white")
     assert sorted(list(set(exemplar_names))) == sorted(EXEMPLAR_LIST)
 
     # embed memory_keys into VectorDB
@@ -86,11 +134,19 @@ def build_memory(memory_path: str):
 
 
 def retrieve_exemplar_name(memory, query: str, top_k) -> str:
+    """
+    FAISSからqueryに近い要素をtop_k取得し、最頻値のnameを返す
+    """
+    debug_cprint(f"memory retrieve_exemplar_name()", "white")
     retriever = memory.as_retriever(search_kwargs={"k": top_k})
-    docs = retriever.get_relevant_documents(query)
+    debug_cprint(f" retriever: {retriever}", "white")
+    docs = retriever.invoke(query)
+    debug_cprint(f" docs: {docs}", "white")
     retrieved_exemplar_names = [doc.metadata["name"] for doc in docs]
+    debug_cprint(f" retrieved_exemplar_names: {retrieved_exemplar_names}", "white")
     logger.info(f"Retrieved exemplars: {retrieved_exemplar_names}")
     data = Counter(retrieved_exemplar_names)
+    debug_cprint(f" data: {data}", "white")
     retrieved_exemplar_name = data.most_common(1)[0][0]
 
     return retrieved_exemplar_name
@@ -98,6 +154,6 @@ def retrieve_exemplar_name(memory, query: str, top_k) -> str:
 
 def load_memory(memory_path):
     embedding = OpenAIEmbeddings(model="text-embedding-ada-002")
-    memory = FAISS.load_local(memory_path, embedding)
+    memory = FAISS.load_local(memory_path, embedding, allow_dangerous_deserialization=True)
 
     return memory

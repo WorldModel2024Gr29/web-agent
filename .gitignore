@@ -28,3 +28,6 @@ synapse/memory/*/*.pkl
 .venv_synapse
 .python-version
 .env
+
+__pycache__/
+.DS_Store

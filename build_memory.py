@@ -5,7 +5,7 @@ from pathlib import Path
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--env", type=str, choices=["miniwob", "mind2web"])
+    parser.add_argument("--env", type=str, choices=["miniwob", "mind2web", "wm_compwob"])
     parser.add_argument("--mind2web_data_dir", type=str)
     parser.add_argument("--mind2web_top_k_elements", type=int, default=3)
     args = parser.parse_args()
@@ -15,6 +15,11 @@ if __name__ == "__main__":
         from synapse.memory.miniwob.build_memory import build_memory
 
         memory_path = os.path.join(current_path, "synapse/memory/miniwob")
+        build_memory(memory_path)
+    elif args.env == "wm_compwob":
+        from synapse.memory.wm_compwob.build_memory import build_memory
+
+        memory_path = os.path.join(current_path, "synapse/memory/wm_compwob")
         build_memory(memory_path)
     else:
         from synapse.memory.mind2web.build_memory import build_memory

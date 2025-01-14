@@ -1,16 +1,126 @@
 import os
 
 from synapse.envs.miniwob.instance import MiniWoBInstance
+from debug import debug_cprint
 
 MINIWOB_DIR = os.path.join(
     os.path.dirname(os.path.realpath(__file__)), "html", "miniwob/"
 )
+
+COMPWOB_DIR = os.path.join(
+    os.path.dirname(os.path.realpath(__file__)), "html", "compwob/"
+)
+
 
 EXTRA_HTML_TASKS = [
     "click-dialog",
     "click-dialog-2",
     "use-autocomplete",
     "choose-date",
+]
+
+COMPWOB_TASKS = [
+    "click-button-sequence_click-checkboxes",
+    "click-button-sequence_click-checkboxes-reverse",
+    "click-button-sequence_click-option",
+    "click-button-sequence_click-option-reverse",
+    "click-button-sequence_click-option_login-user",
+    "click-button-sequence_click-option_login-user-reverse",
+    "click-button-sequence_click-widget_click-link_click-button_click-checkboxes_click-option_click-dialog",
+    "click-button-sequence_click-widget_click-link_click-button_click-checkboxes_click-option_click-dialog-reverse",
+    "click-button-sequence_click-widget_click-link_click-button_click-checkboxes_click-option_click-dialog_login-user",
+    "click-button-sequence_click-widget_click-link_click-button_click-checkboxes_click-option_click-dialog_login-user-reverse",
+    "click-button-sequence_login-user-popup",
+    "click-button-sequence_login-user-popup-reverse",
+    "click-button-sequence_use-autocomplete",
+    "click-button-sequence_use-autocomplete-reverse",
+    "click-button_click-checkboxes",
+    "click-button_click-checkboxes-reverse",
+    "click-button_click-checkboxes-transfer",
+    "click-button_click-checkboxes-transfer-reverse",
+    "click-button_click-dialog",
+    "click-button_click-dialog-reverse",
+    "click-button_click-link",
+    "click-button_click-link-reverse",
+    "click-button_click-option",
+    "click-button_click-option-reverse",
+    "click-button_click-option_login-user",
+    "click-button_click-option_login-user-reverse",
+    "click-button_click-tab-2-hard",
+    "click-button_click-tab-2-hard-reverse",
+    # "click-button_enter-text",  # bugged
+    "click-checkboxes-soft_enter-password",
+    "click-checkboxes-soft_enter-password-reverse",
+    "click-checkboxes-soft_multi-layouts",
+    "click-checkboxes-soft_multi-layouts-reverse",
+    "click-checkboxes-transfer_click-button-sequence_enter-password",
+    "click-checkboxes-transfer_click-button-sequence_enter-password-reverse",
+    "click-checkboxes-transfer_enter-password_click-dialog",
+    "click-checkboxes-transfer_enter-password_click-dialog-reverse",
+    "click-checkboxes-transfer_multi-layouts_email-inbox-forward-nl-transition",
+    "click-checkboxes-transfer_multi-layouts_email-inbox-forward-nl-transition-reverse",
+    "click-checkboxes_click-widget_click-button-sequence",
+    "click-checkboxes_click-widget_click-button-sequence-reverse",
+    "click-dialog-2_click-widget",
+    "click-dialog-2_click-widget-reverse",
+    "click-dialog-2_login-user-popup",
+    "click-dialog-2_login-user-popup-reverse",
+    "click-dialog_click-button-sequence_enter-password",
+    "click-dialog_click-button-sequence_enter-password-reverse",
+    "click-dialog_click-checkboxes-transfer_click-widget",
+    "click-dialog_click-checkboxes-transfer_click-widget-reverse",
+    "click-dialog_search-engine",
+    "click-dialog_search-engine-reverse",
+    "click-link_click-button",
+    "click-link_click-button-reverse",
+    "click-link_click-button_click-checkboxes_click-dialog",
+    "click-link_click-button_click-checkboxes_click-dialog-reverse",
+    "click-link_click-button_click-checkboxes_click-option_click-dialog",
+    "click-link_click-button_click-checkboxes_click-option_click-dialog-reverse",
+    "click-link_click-button_click-dialog",
+    "click-link_click-button_click-dialog-reverse",
+    "click-link_click-dialog",
+    "click-link_click-dialog-reverse",
+    "click-link_click-widget",
+    "click-link_click-widget-reverse",
+    "click-link_enter-text",
+    "click-link_enter-text-reverse",
+    "click-option_enter-text",
+    "click-option_enter-text-reverse",
+    "click-option_login-user",
+    "click-option_login-user-reverse",
+    "click-option_login-user-transition",
+    "click-option_login-user-transition-reverse",
+    "click-option_multi-layouts_click-widget_login-user-popup-transition",
+    "click-option_multi-layouts_click-widget_login-user-popup-transition-reverse",
+    "click-option_navigate-tree",
+    "click-option_navigate-tree-reverse",
+    "click-widget_click-checkboxes-soft",
+    "click-widget_click-checkboxes-soft-reverse",
+    "click-widget_click-link_click-button_click-checkboxes_click-option_click-dialog",
+    "click-widget_click-link_click-button_click-checkboxes_click-option_click-dialog-reverse",
+    "click-widget_click-option_click-dialog",
+    "click-widget_click-option_click-dialog-reverse",
+    "click-widget_enter-password",
+    "click-widget_enter-password-reverse",
+    "click-widget_multi-layouts",
+    "click-widget_multi-layouts-reverse",
+    "enter-date_login-user",
+    "enter-date_login-user-reverse",
+    "enter-password_click-checkboxes_login-user-popup",
+    "enter-password_click-checkboxes_login-user-popup-reverse",
+    "enter-password_click-option",
+    "enter-password_click-option-reverse",
+    "login-user-popup_email-inbox-forward-nl-turk-transition",
+    "login-user-popup_email-inbox-forward-nl-turk-transition-reverse",
+    "login-user_navigate-tree",
+    "login-user_navigate-tree-reverse",
+    "login-user_navigate-tree-transition",
+    "login-user_navigate-tree-transition-reverse",
+    "multi-layouts_login-user",
+    "multi-layouts_login-user-reverse",
+    "use-autocomplete_click-dialog",
+    "use-autocomplete_click-dialog-reverse",
 ]
 
 
@@ -68,7 +178,7 @@ class MiniWoBEnv(object):
             subdomain=self.subdomain,
             seed=seed,
             headless=self.headless,
-            base_url=f"file://{MINIWOB_DIR}",
+            base_url=f"file://{COMPWOB_DIR if self.subdomain in COMPWOB_TASKS else MINIWOB_DIR}",
             wait_ms=1000.0,
             refresh_freq=1,
             **kwargs,
@@ -89,14 +199,31 @@ class MiniWoBEnv(object):
         Returns:
             obs (str)
         """
+        debug_cprint(f"env.reset()", "blue")
+
         self.configure(seed=seed)
         self.set_record_screenshots(record_screenshots)
+
         states = [None]
-        self.instance.call(self.instance.reset, states, seed)
+        # debug_cprint(f" states before instance.call: \n[{states}]", "blue")
+        debug_cprint(f"  instance.call()", "blue")
+        self.instance.call(self.instance.reset, states, seed)  # HTML取得
+        debug_cprint(f"  instance.wait()", "blue")
         self.instance.wait()
+
+        debug_cprint(f" states after instance.call : \n[{states}]", "blue")
+        debug_cprint(f"   len(states) : {len(states)}", "blue")
+        debug_cprint(f"   states[0].html_body : \n[{states[0].html_body}]", "blue")
+        debug_cprint(f"   states[0].html_extra : \n[{states[0].html_extra}]", "blue")
+
+        debug_cprint(f" obs = self.state2html(states)", "blue")
         obs = self.state2html(states)
+        debug_cprint(f" obs: [\n{obs}\n]", "blue")
+
         self.task = states[0].utterance
 
+        # DOMからQueryを抽出？
+        debug_cprint(f" task: {self.task}\n", "blue")
         return obs
 
     def step(self, action):
